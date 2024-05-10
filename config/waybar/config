@@ -1,0 +1,154 @@
+[
+	{
+		"name": "main",
+		"output": "DP-2",
+		"layer": "top",
+		"position": "top",
+		"height": 51,
+		"modules-left": ["hyprland/workspaces", "custom/media"],
+		"modules-center": ["clock"],
+		"modules-right": ["pulseaudio", "network", "backlight", "cpu", "battery", "custom/power"],
+
+		// Modules configuration
+		"hyprland/workspaces": {
+			"format": "<span font='12'>{icon}</span>",
+			"format-icons": {
+				"1": "",
+				"2": "󰕷",
+				"3": "󰃤",
+				"4": "",
+				"5": "󱃾",
+				"6": "",
+				"7": "",
+				"8": "",
+				"9": "󱃾",
+				"default": "",
+				"active": ""
+			},
+			"on-click": "activate"
+		},
+		"custom/media": {
+			"format": "{}",
+			"escape": true,
+			"return-type": "json",
+			"max-length": 40,
+			"on-click": "playerctl play-pause",
+			"on-click-right": "playerctl stop",
+			"on-scroll-up": "playerctl next",
+			"on-scroll-down": "playerctl previous",
+			"exec": "~/.config/waybar/scripts/mediaplayer.py 2> /dev/null"
+		},
+		"clock": {
+			"format": "{:%H:%M - %Y-%m-%d}",
+			"tooltip": false,
+			"on-click": "gsimplecal"
+		},
+		"pulseaudio": {
+			"format": "<span font='13' rise='-1000'>{icon}</span> {volume}%",
+			"format-muted": "<span font='12' rise='-500'>󰝟</span> Muted",
+			"format-icons": {
+				"headphone": "󰋋",
+				"hands-free": "󰋋",
+				"headset": "󰋋",
+				"phone": "󰏲",
+				"portable": "󰏲",
+				"car": "󰄋",
+				"default": ["", "", ""]
+			},
+			"on-click": "pavucontrol"
+		},
+		"network": {
+			"format-wifi": "<span font='13' rise='-2200'>󰖩</span> {essid}",
+			"format-ethernet": "<span font='11'>󰈁</span> {ipaddr}",
+			"format-linked": "<span font='13' rise='-1600'>󰈂</span> Disconnected",
+			"format-disconnected": "<span font='13' rise='-1600'>󰖪</span> Disconnected",
+			"format-alt": "{ifname}: {ipaddr}/{cidr}"
+		},
+		"backlight": {
+			"device": "amd_backlight",
+			"format": "<span font='13' rise='-1300'>{icon}</span> {percent}%",
+			"format-icons": ["󰃞", "󰃟", "󰃠"],
+			"on-scroll-up": "brightnessctl s 10%+",
+			"on-scroll-down": "brightnessctl s 10%-"
+		},
+		"cpu": {
+			"interval": 5,
+			"format": "{icon0} {icon1} {icon2} {icon3}",
+			"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+		},
+		"battery": {
+			"states": {
+				"warning": 30,
+				"critical": 15
+			},
+			"format": "<span font='11'>{icon}</span> {capacity}%",
+			"format-charging": "<span font='11'>󰂄</span> {capacity}%",
+			"format-plugged": "<span font='11'>󰂄</span> {capacity}%",
+			"format-alt": "{time} {icon}",
+			"format-full": "<span font='11'>󰁹</span> {capacity}%",
+			"format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"]
+		},
+		"custom/power": {
+			"format": "<span font='13'>󰐥</span>",
+			"on-click": "~/.config/waybar/scripts/poweroff.sh"
+		}
+	},
+	{
+		"name": "second",
+		"output": "DP-7",
+		"layer": "bottom",
+		"position": "top",
+		"height": 51,
+		"modules-left": [],
+		"modules-center": ["hyprland/workspaces"],
+		"modules-right": [],
+
+		// Modules configuration
+		"hyprland/workspaces": {
+			"format": "<span font='12'>{icon}</span>",
+			"format-icons": {
+				"1": "",
+				"2": "󰕷",
+				"3": "󰃤",
+				"4": "",
+				"5": "󱃾",
+				"6": "",
+				"7": "",
+				"8": "",
+				"9": "󱃾",
+				"default": "",
+				"active": ""
+			},
+			"on-click": "activate"
+		},
+	},
+	{
+		"name": "lid",
+		"output": "eDP-1",
+		"layer": "bottom",
+		"position": "top",
+		"height": 20,
+		"modules-left": [],
+		"modules-center": ["hyprland/workspaces"],
+		"modules-right": [],
+
+		// Modules configuration
+		"hyprland/workspaces": {
+			"format": "<span font='12'>{icon}</span>",
+			"format-icons": {
+				"1": "",
+				"2": "󰕷",
+				"3": "󰃤",
+				"4": "",
+				"5": "󱃾",
+				"6": "",
+				"7": "",
+				"8": "",
+				"9": "󱃾",
+				"default": "",
+				"active": ""
+			},
+			"on-click": "activate"
+		},
+	},
+]

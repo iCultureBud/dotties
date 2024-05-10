@@ -1,0 +1,374 @@
+#####################
+# iCulture's Config #
+#####################
+
+#############
+# Variables #
+#############
+
+# vim keybdinding
+set $left  h
+set $down  j
+set $up    k
+set $right l
+
+# bind super key
+set $mod Mod4
+
+# set basic variables
+set $term     kitty
+set $ibrowser firefox
+set $fbrowser pcmanfm
+
+# Wofi
+set $menu wofi --show drun -W 30%
+
+
+#############
+# Autostart #
+#############
+exec {
+	# Import environment variables / disable gtk lag
+	exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+	exec hash dbus-update-activation-environment 2>/dev/null && \
+		dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+
+	# Usefull things
+	mako
+	autotiling -w 1 2 3 4 5 6
+	wlsunset -l 46.9 -L 15.2 -t 3500
+	wl-paste -t text --watch clipman store
+	remind -z -k'notify-send \"Reminder:\" \"%s\"' ~/.reminders.rem &
+
+	# Idle 
+	exec ~/.config/sway/scripts/idle.sh
+}
+
+
+##########
+# Output #
+##########
+
+# Set screen scale and position
+output DP-7 pos 0 0 scale 1.25
+output DP-5 pos 2048 0 scale 1.25
+output eDP-1 pos 4096 0
+
+# Workspace setup
+workspace {
+	# Home
+	#1 output DP-2
+	#2 output DP-2
+	#3 output DP-2
+	#4 output DP-2
+	#5 output DP-2
+
+	#6 output eDP-1
+	#7 output eDP-1
+	#8 output eDP-1
+
+	# Office
+	5 output DP-8
+	8 output DP-8
+
+	1 output DP-5
+	2 output DP-5
+	3 output DP-5
+	4 output DP-5
+
+	6 output eDP-1
+	7 output eDP-1
+}
+
+# Assign apps to workspaces
+assign {
+    [app_id="rhythmbox"] 6
+    [app_id="psst-gui"] 6
+}
+
+# Windows specific settings
+for_window {
+    # Floating apps
+    [app_id="qalculate-gtk"] floating enable, \
+			     resize set width 25 ppt height 50 ppt, \
+			     move position 0 ppt 0 ppt
+
+    [app_id="pavucontrol"] floating enable, \
+                           resize set width 25 ppt height 45 ppt, \
+                           move position 75 ppt 0 ppt
+
+    [app_id="gsimplecal"] move position 43 ppt 0 ppt
+	
+    [app_id="com.rafaelmardojai.Blanket"] floating enable
+
+    [app_id="kitty-float"] floating enable, \
+					       resize set width 50 ppt height 45 ppt,
+
+    # Fullscreen apps
+    [app_id="rhythmbox"] fullscreen
+    [app_id="psst-gui"] fullscreen
+    
+    # Inhibit idle for specific apps
+    [class=".*"] inhibit_idle fullscreen
+    [app_id=".*"] inhibit_idle fullscreen
+}
+
+# Set wallpaper
+output * bg ~/Pictures/wallpaper/Deer.jpg fill
+
+# Font
+font pango:Meslo LG S Nerdonts Complete 12
+
+## Window decoration
+# class                 border  backgr. text    indicator child_bord>
+client.focused          #7FBBB2 #2F383E #D3C6AA #7FBBB2   #7FBBB2
+client.focused_inactive #7FBBB2 #2F383E #53605C #53605C   #53605C
+client.unfocused        #7FBBB2 #2F383E #53605C #53605C   #53605C
+client.urgent           #E67E80 #E67E80 #2F383E #7FBBB2   #E67E80
+
+# Gaps
+gaps {
+    outer 5
+    inner 5
+}
+
+# Border lines
+default_border pixel 2
+titlebar_border_thickness 2
+
+# Cursor theme
+seat seat0 {
+	xcursor_theme BreezeX 24
+	hide_cursor 8000
+}
+
+# Disable mouse warping
+#mouse_warping none
+
+
+##############
+# Status Bar #
+##############
+bar {
+	swaybar_command waybar
+}
+
+
+###############
+# GTK Theming #
+###############
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme Everforest
+    gsettings set $gnome-schema icon-theme Zafiro
+    gsettings set $gnome-schema cursor-theme BreezeX
+
+}
+
+
+##########
+# Inputs #
+##########
+
+# Touchpad settings
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+	dwt enabled
+	tap enabled
+	natural_scroll enabled
+	middle_emulation enabled
+}
+
+# Keyboard settings
+input * {
+	xkb_layout "us-german-umlaut"
+	xkb_options caps:super
+	xkb_numlock enable
+}
+
+
+################
+# Key bindings #
+################
+
+# BASIC #
+
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Launch terminal in floating mode
+bindsym Alt+Shift+Ctrl+Return exec kitty --class kitty-float
+
+# Kill focused window
+bindsym $mod+q kill
+
+# Start your launcher
+bindsym $mod+r exec $menu
+
+# Launch internet browser
+bindsym $mod+f exec $ibrowser
+
+# Launch file browser
+bindsym $mod+e exec $fbrowser
+
+# Launch Freetube
+bindsym $mod+y exec freetube
+
+# Launch music player
+bindsym $mod+m exec psst-gui
+
+# Launch Calculator
+bindsym XF86Calculator exec qalculate-gtk
+
+# Launch Calculator
+bindsym Alt+Shift+Ctrl+q exec qalculate-gtk
+
+# Launch password manager
+bindsym $mod+p exec teampave
+
+# Floating modifier
+floating_modifier $mod normal
+
+# Reload the configuration file
+bindsym $mod+Shift+r reload
+
+# Enter Logout Menu
+bindsym $mod+Shift+e exec wlogout
+
+# Lock Screen
+bindsym $mod+Shift+o exec ~/.config/sway/scripts/lock.sh
+
+# Open clipman
+bindsym $mod+c exec clipman pick -t wofi &
+
+# FOCUS #
+
+# Focus - vim keys
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# Focus - arrow keys
+bindsym $mod+Left workspace prev
+bindsym $mod+Right workspace next
+
+
+# MOVING #
+
+# Move - vim keys
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# Move - arrow keys
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+
+# MEDIA CONTROL #
+
+# Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +2% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -2% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec brightnessctl s 500+
+bindsym XF86MonBrightnessDown exec brightnessctl s 500-
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Take screenshot of the current monitor
+bindsym Alt+Shift+Ctrl+e exec grim -o $(hyprctl monitors | jq -r '.[] | select(.focused) | .name') ~/Pictures/screenshots/$(date +%Y-%m-%d).png
+
+# Take screenshot of selection
+bindsym Alt+Shift+Ctrl+w exec grim -g "$(slurp)" ~/Pictures/screenshots/$(date +%Y-%m-%d).png
+
+
+# WORKSPACES #
+
+# Switch to workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+
+
+# LAYOUT #
+
+# Set split mode 
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+n layout toggle split
+
+# Make the current focus fullscreen
+bindsym $mod+i fullscreen
+
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+space floating toggle
+
+# Swap focus between the tiling area and the floating area
+bindsym $mod+space focus mode_toggle
+
+# Move focus to the parent container
+bindsym $mod+a focus parent
+
+
+# SCRATCHPAD #
+
+# Move the currently focused window to the scratchpad
+bindsym Alt+Shift+Ctrl+s move scratchpad
+
+# Cycle through all windows in the scratchpad 
+bindsym Alt+Shift+Ctrl+d scratchpad show
+
+
+# Resize containers
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+
+    bindsym Left resize shrink width 10px
+    bindsym Down resize shrink height 10px
+    bindsym Up resize grow height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Enter resizing mode - Who the fuck needs this?!
+# bindsym $mod+/ mode "resize"
+
+
+# Include default configs #
+include /etc/sway/config.d/*

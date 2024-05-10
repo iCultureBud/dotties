@@ -1,0 +1,95 @@
+format = """
+[░▒▓](blue)\
+[  ](bg:blue fg:white)\
+[](fg:blue bg:green)\
+$directory\
+[](fg:green bg:purple)\
+$git_branch\
+$git_status\
+[](fg:purple bg:red)\
+$c\
+$dart\
+$elm\
+$golang\
+$gradle\
+$nodejs\
+$python\
+$rust\
+[](fg:red bg:cyan)\
+$docker_context\
+[](fg:cyan) \
+"""
+
+[directory]
+style = "bg:green"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = " 󰈙 "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important 󰈙 " = " 󰈙 "
+
+[git_branch]
+symbol = ""
+style = "bg:purple"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:purple"
+format = '[$all_status$ahead_behind ]($style)'
+
+[c]
+symbol = " "
+style = "bg:red"
+format = '[ $symbol ($version) ]($style)'
+
+[dart]
+symbol = " "
+style = "bg:red"
+format = '[ $symbol($version) ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:red"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:red"
+format = '[ $symbol ($version) ]($style)'
+
+[lua]
+symbol = " "
+style = "bg:red"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:red"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = " "
+style = "bg:red"
+format = '[ $symbol ($version) \(${virtualenv}\) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:red"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:cyan"
+format = '[ $symbol $context ]($style)'
+

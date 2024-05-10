@@ -1,0 +1,9 @@
+artwork*
+queued.bak
+islandhelper
+
+# macos files
+.DS_Store
+scripts/islands/music/cache
+scripts/islands/previous_island
+userconfig.sh

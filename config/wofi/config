@@ -1,0 +1,11 @@
+hide_scroll=true
+line_wrap=word
+term=kitty
+always_parse_args=true
+show_all=false
+print_command=false
+layer=overlay
+allow-images=false
+insensitive=true
+display_generic=true
+key_expand=Tab

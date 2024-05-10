@@ -1,0 +1,7 @@
+config/nvim/undo/*
+config/nvim/plugins/*
+config/newm/__pycache__/*
+config/spicetify/Extracted/*
+config/spicetify/Backup/*
+config/spicetify/config-xpui.ini
+.DS_Store

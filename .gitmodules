@@ -1,0 +1,4 @@
+[submodule "config/qutebrowser/catppuccin"]
+	path = config/qutebrowser/catppuccin
+	url = https://github.com/catppuccin/qutebrowser.git
+	ignore = dirty
