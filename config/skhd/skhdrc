@@ -17,6 +17,7 @@ cmd + shift - h: yabai -m window --swap west
 cmd + shift - j: yabai -m window --swap south
 cmd + shift - k: yabai -m window --swap north
 cmd + shift - l: yabai -m window --swap east
+alt - v : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 
 ################
