@@ -1,5 +1,6 @@
+set colors
 set icons
-# set drawbox
+set drawbox
 
 # Mapping
 map f             $EDITOR $(fzf)
@@ -9,7 +10,7 @@ map <backspace>   set hidden!
 map <enter>       shell
 map <esc>         quit
 map gl            follow_link
-map P             link
+map P             :link
 map gd            goto_dots
 
 # Mapping for Pine
@@ -19,7 +20,7 @@ map ee $$EDITOR "$f"
 # Complete delete
 cmd delete ${{
 	set -f
-	rm -rf $fx
+	rm -rf "$fx"
 }}
 
 cmd open ${{
@@ -75,3 +76,4 @@ cmd link %{{
     rm ~/.local/share/lf/files
     lf -remote "send clear"
 }}
+map P :link
