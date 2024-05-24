@@ -69,7 +69,6 @@ return {
 				'cssls',
 				'docker_compose_language_service',
 				'dockerls',
-				'intelephense',
 				'lua_ls',
 				'pylsp',
 				'tsserver',
@@ -100,20 +99,6 @@ return {
 				lspconfig[server_name].setup(server_opts)
 			end
 		})
-
-		-- Setup Dart LSP
-		lspconfig.dartls.setup({
-			on_attach = on_attach,
-		})
-
-		-- Setup Null-Ls
-		-- local null_ls = require('null-ls')
-		-- null_ls.setup({
-		-- 	sources = {
-		-- 		null_ls.builtins.completion.luasnip,
-		-- 		null_ls.builtins.diagnostics.codespell,
-		-- 	},
-		-- })
 
 		-- Configure custom signs for diagnostics.
 		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
