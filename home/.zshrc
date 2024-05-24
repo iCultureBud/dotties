@@ -29,12 +29,64 @@ lfcd () {
     fi
 }
 
+
+#########
+# ABBRs #
+#########
+# declare a list of expandable aliases to fill up later
+typeset -a ealiases
+ealiases=()
+
+# write a function for adding an alias to the list mentioned above
+function abbr() {
+    alias $1
+    export $1
+    ealiases+=(${1%%\=*})
+}
+
+# expand any aliases in the current line buffer
+function expand-ealias() {
+    if [[ $LBUFFER =~ "\<(${(j:|:)ealiases})\$" ]] && [[ "$LBUFFER" != "\\"* ]]; then
+        zle _expand_alias
+        zle expand-word
+    fi
+    zle magic-space
+}
+zle -N expand-ealias
+
+# Bind the space key to the expand-alias function above, so that space will expand any expandable aliases
+bindkey ' '        expand-ealias
+bindkey -M isearch " "      magic-space     # normal space during searches
+
+# A function for expanding any aliases before accepting the line as is and executing the entered command
+expand-alias-and-accept-line() {
+    expand-ealias
+    zle .backward-delete-char
+    zle .accept-line
+}
+zle -N accept-line expand-alias-and-accept-line
+
 # Keybindings
 bindkey	-e
 bindkey -s '^f' 'lf\n'
 bindkey -s '^o' 'lfcd\n'
 bindkey	"^[[3~"	delete-char
 #bindkey -M viins ö vi-cmd-mode
+
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
+
+if type brew &>/dev/null; then
+	FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+	autoload -Uz compinit
+	compinit
+fi
 
 # ZSH completion
 zstyle :compinstall filename '~/.zshrc'
@@ -50,12 +102,11 @@ plugins=(git web-search zsh-autosuggestions zsh-syntax-highlighting)
 ###########
 
 # Package Management
-alias install="yay -S"
-alias search="yay -Ss"
-alias update="yay -Syu"
-alias remove="yay -Rns"
-alias look="pacman -Qs"
-alias info="pacman -Qi"
+abbr install="brew install"
+abbr search="brew search"
+abbr update="brew update && brew upgrade"
+abbr remove="brew remove"
+abbr info="brew info"
 
 # System
 alias sys="sudo systemctl"
@@ -160,6 +211,5 @@ fi
 eval "$(zoxide init zsh)"
 
 # Plugins
-# source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.config/lf/icons.zsh
