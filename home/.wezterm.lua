@@ -7,7 +7,7 @@ return {
 	window_close_confirmation = 'NeverPrompt',
 	hide_tab_bar_if_only_one_tab = true,
 	font_size = 19,
-	window_background_opacity = .90,
+	window_background_opacity = .85,
 	macos_window_background_blur = 80,
 	native_macos_fullscreen_mode = false,
 	color_scheme = 'nordfox',

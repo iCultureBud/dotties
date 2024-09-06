@@ -58,9 +58,6 @@ vim.keymap.set('n', '<C-right>', '<C-w>>', { desc = "Increase pane width" })
 vim.keymap.set('n', '<C-up>', '<C-w>+', { desc = "Increase pane height" })
 vim.keymap.set('n', '<C-down>', '<C-w>-', { desc = "Decrease pane height" })
 
--- Mapping for Symbols Outline
-vim.keymap.set('n', '<leader>so', ':SymbolsOutline<CR>')
-
 -- Mapping for LSP Goto Definition
 vim.keymap.set('n', '<leader>gv', ':vsplit<CR>gd')
 

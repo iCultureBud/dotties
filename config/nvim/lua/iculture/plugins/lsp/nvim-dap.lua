@@ -8,7 +8,7 @@ return {
 	},
 	config = function()
 		-- Setup debug adapters and related stuff.
-		require('dap-python').setup('~/.virtualenvs/arivo/bin/python')
+		require('dap-python').setup('~/.virtualenvs/voebs/bin/python')
 		local configurations = require('dap').configurations.python
 
 		for _, configuration in pairs(configurations) do

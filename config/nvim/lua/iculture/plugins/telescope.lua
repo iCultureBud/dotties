@@ -19,7 +19,7 @@ return {
 					'%.map',
 					'%.log',
 					'%.min.js',
-					'static'
+					'dist'
 				},
 				prompt_prefix = "   ",
 				selection_caret = "  ",

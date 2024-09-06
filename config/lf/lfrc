@@ -1,6 +1,5 @@
-set colors
 set icons
-set drawbox
+# set drawbox
 
 # Mapping
 map f             $EDITOR $(fzf)
