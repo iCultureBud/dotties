@@ -17,7 +17,7 @@ require("lazy").setup({
 		{ import = "iculture.plugins" },
 		{ import = "iculture.plugins.lsp" },
 	},
-	install = { colorscheme = { 'nightfox' } },
+	install = { colorscheme = { 'gruvbox-material' } },
 	ui = {
 		icons = {
 			loaded = "󰄳",

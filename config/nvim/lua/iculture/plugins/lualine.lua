@@ -3,7 +3,7 @@ return {
 	dependencies = { 'kyazdani42/nvim-web-devicons' },
 	opts = {
 		options = {
-			theme = 'nordfox',
+			theme = 'gruvbox-material',
 			globalstatus = true,
 			component_separators = { left = '/', right = '\\' },
 			section_separators = { left = '', right = '' },

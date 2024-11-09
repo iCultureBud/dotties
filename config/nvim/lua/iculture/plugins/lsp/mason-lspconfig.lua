@@ -61,6 +61,32 @@ return {
 			end
 		})
 
+		-- Configure custom signs for diagnostics.
+		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+		for type, icon in pairs(signs) do
+			local hl = "DiagnosticSign" .. type
+			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+		end
+
+		-- Set diagnostic keymaps.
+		local diagnostic_opts = { noremap = true, silent = true }
+		vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, diagnostic_opts)
+		vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, diagnostic_opts)
+		vim.keymap.set('n', ']d', vim.diagnostic.goto_next, diagnostic_opts)
+		vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, diagnostic_opts)
+
+		-- Configure LSP diagnostics behaviour
+		vim.diagnostic.config({
+			virtual_text = false,
+			-- virtual_text = {
+			-- 	enabled = false,
+			-- 	prefix = ' ',
+			-- },
+			signs = true,
+			underline = true,
+			update_in_insert = false,
+		})
+
 		-- Always install servers
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
@@ -71,15 +97,22 @@ return {
 				'dockerls',
 				'lua_ls',
 				'pylsp',
-				'tsserver',
+				'ts_ls',
 				'vimls'
 			},
 		})
+
+		-- Setup clang
+		lspconfig.clangd.setup({
+			init_options = {
+				fallbackFlags = {'--std=c++20'}
+			},
+		})
+
 		-- Auto handled LSP from mason.
 		mason_lspconfig.setup_handlers({
 			function(server_name)
 				local server_opts = {
-					-- 	on_attach = on_attach,
 					capabilities = capabilities
 				}
 
@@ -98,31 +131,6 @@ return {
 
 				lspconfig[server_name].setup(server_opts)
 			end
-		})
-
-		-- Configure custom signs for diagnostics.
-		local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-		end
-
-		-- Set diagnostic keymaps.
-		local diagnostic_opts = { noremap = true, silent = true }
-		vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, diagnostic_opts)
-		vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, diagnostic_opts)
-		vim.keymap.set('n', ']d', vim.diagnostic.goto_next, diagnostic_opts)
-		vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, diagnostic_opts)
-
-		-- Configure LSP diagnostics behaviour
-		vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-			virtual_text = {
-				enabled = true,
-				prefix = ' ',
-			},
-			signs = true,
-			underline = true,
-			update_in_insert = false,
 		})
 	end
 }

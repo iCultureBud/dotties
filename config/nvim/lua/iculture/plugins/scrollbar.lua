@@ -1,51 +1,61 @@
 return {
 	'petertriho/nvim-scrollbar',
 	event = { 'BufReadPre', 'BufNewFile' },
-	dependencies = 'EdenEast/nightfox.nvim',
+	dependencies = 'f4z3r/gruvbox-material.nvim',
 	config = function()
-		local nf_colors = require('nightfox.palette').load('nordfox')
+		local colors = require('gruvbox-material.colors').get(vim.o.background, 'medium')
 
 		require('scrollbar').setup({
+			hide_if_all_visible = true,
+			excluded_filetypes = {
+				'prompt',
+				'TelescopePrompt',
+				'DressingSelect',
+				'NvimTree'
+			},
+			handle = {
+				blend = 0,
+			},
 			marks = {
 				Cursor = {
 					text = "•",
-					color = nf_colors.blue.base,
+					color = colors.blue,
 				},
 				Search = {
 					text = { '' },
-					color = nf_colors.yellow.base,
+					color = colors.yellow,
 				},
 				Error = {
 					text = { '' },
-					color = nf_colors.red.base,
+					color = colors.red,
 				},
 				Warn = {
 					text = { '' },
-					color = nf_colors.orange.base,
+					color = colors.orange,
 				},
 				Info = {
 					text = { '' },
-					color = nf_colors.blue.base,
+					color = colors.blue,
 				},
 				Hint = {
 					text = { '' },
-					color = nf_colors.green.base,
+					color = colors.green,
 				},
 				Misc = {
 					text = { "-", "=" },
-					color = nf_colors.magenta.base,
+					color = colors.purple,
 				},
 				GitAdd = {
 					text = '',
-					color = nf_colors.green.base,
+					color = colors.green,
 				},
 				GitChange = {
 					text = '',
-					color = nf_colors.yellow.base,
+					color = colors.yellow,
 				},
 				GitDelete = {
 					text = '',
-					color = nf_colors.red.base,
+					color = colors.red,
 				},
 			}
 		})

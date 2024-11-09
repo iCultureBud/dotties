@@ -1,6 +1,6 @@
 return {
-	"lewis6991/gitsigns.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	'lewis6991/gitsigns.nvim',
+	event = { 'BufReadPre', 'BufNewFile' },
 	opts = {
 		on_attach = function(bufnr)
 			local function map(mode, lhs, rhs, opts)

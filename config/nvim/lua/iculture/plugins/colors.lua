@@ -1,36 +1,33 @@
 return {
-	'EdenEast/nightfox.nvim',
+	'f4z3r/gruvbox-material.nvim',
 	priority = 1000,
 	config = function()
-		-- Setup color scheme
-		local nightfox = require('nightfox')
-		local nf_colors = require('nightfox.palette').load('nordfox')
-
-		-- Setup Nightfox
-		nightfox.setup({
-			options = {
+		local colors = require('gruvbox-material.colors').get(vim.o.background, 'medium')
+		local gruvbox = require('gruvbox-material')
+		gruvbox.setup({
+			contrast = 'medium',
+			background = {
 				transparent = true,
-				styles = {
-					comments = 'italic',
-					functions = 'bold',
-				}
-			},
+			}
 		})
 
+
 		-- Set theme global
-		vim.api.nvim_command('colorscheme nordfox')
-		vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-		vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+		vim.api.nvim_command('colorscheme gruvbox-material')
+
+		vim.api.nvim_set_hl(0, 'GitSignsAdd', { bg = 'none' })
+		vim.api.nvim_set_hl(0, 'GitSignsChange', { bg = 'none' })
+		vim.api.nvim_set_hl(0, 'GitSignsDelete', { bg = 'none' })
 
 		-- Set colors for indentation
-		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent1', { fg = nf_colors.yellow.base })
-		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent2', { fg = nf_colors.blue.base })
-		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent3', { fg = nf_colors.orange.base })
-		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent4', { fg = nf_colors.magenta.base })
-		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent5', { fg = nf_colors.green.base })
-		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent6', { fg = nf_colors.red.base })
+		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent1', { fg = colors.aqua })
+		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent2', { fg = colors.yellow })
+		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent3', { fg = colors.blue })
+		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent4', { fg = colors.red })
+		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent5', { fg = colors.green })
+		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent6', { fg = colors.purple })
 
 		-- Set color for Codeium in [nvim-cmp]
-		vim.api.nvim_set_hl(0, 'CmpItemKindCodeium', { fg = nf_colors.yellow.base })
+		vim.api.nvim_set_hl(0, 'CmpItemKindCodeium', { fg = colors.yellow })
 	end
 }
