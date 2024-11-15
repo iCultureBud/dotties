@@ -7,9 +7,9 @@ hash dbus-update-activation-environment 2>/dev/null && \
         WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
 # GTK Theming
-gsettings set org.gnome.desktop.interface gtk-theme Nordic-Polar
+gsettings set org.gnome.desktop.interface gtk-theme Nordic
 gsettings set org.gnome.desktop.wm.preferences theme Nordic
-gsettings set org.gnome.desktop.interface icon-theme Zafiro-Nord-Black-Blue
+gsettings set org.gnome.desktop.interface icon-theme Zafiro-Nord-Black
 gsettings set org.gnome.desktop.interface cursor-theme BreezeX
 
 # Autostart for Hyprland

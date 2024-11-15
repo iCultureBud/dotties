@@ -20,7 +20,8 @@ wezterm.on('window-config-reloaded', function(window)
 end)
 
 return {
-	window_decorations = "RESIZE",
+	-- window_decorations = "RESIZE",
+	enable_wayland = true,
 	check_for_updates = false,
 	window_close_confirmation = 'NeverPrompt',
 	hide_tab_bar_if_only_one_tab = true,
