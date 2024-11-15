@@ -40,7 +40,7 @@ gtklock-playerctl-module
 gtklock-userinfo-module
 gvfs
 htop
-hyprland
+hyprland-git
 hyprlock
 hyprpaper
 insomnia-bin
@@ -48,6 +48,7 @@ lazygit
 less
 lf
 librewolf-bin
+libsoup
 linux
 linux-firmware
 localsearch
@@ -106,7 +107,7 @@ wireguard-tools
 wireplumber
 wlsunset
 wofi
-xdg-desktop-portal-hyprland
+xdg-desktop-portal-hyprland-git
 yay
 zenity
 zip

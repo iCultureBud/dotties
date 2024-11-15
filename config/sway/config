@@ -161,8 +161,8 @@ bar {
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme Everforest
-    gsettings set $gnome-schema icon-theme Zafiro
+    gsettings set $gnome-schema gtk-theme Gruvbox-Dark-Medium
+    gsettings set $gnome-schema icon-theme oomox-gruvbox_dark
     gsettings set $gnome-schema cursor-theme BreezeX
 
 }

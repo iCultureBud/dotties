@@ -12,13 +12,13 @@ sort=-time
 ############################
 ########### NORD ###########
 ############################
-background-color=#3b4252
-text-color=#d8dee9
-border-color=#b48ead
+background-color=#282828
+text-color=#d4be98
+border-color=#89b482
 progress-color=over #414559
 
 [urgency=high]
-border-color=#bf616a
+border-color=#ea6962
 
 
 

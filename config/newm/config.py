@@ -18,7 +18,7 @@ def on_reconfigure():
 def configure_gtk():
     gnome_schema = 'org.gnome.desktop.interface'
     wm_service_extra_config = (
-        f"gsettings set {gnome_schema} gtk-theme Nordic-Polar",  # change to the theme of your choice
+        f"gsettings set {gnome_schema} gtk-theme Gruvbox-Dark-Medium",  # change to the theme of your choice
         #  f"gsettings set {gnome_schema} icon-theme Tela",  # change to the icon of your choice
         f"gsettings set {gnome_schema} cursor-theme BreezeX",  # change to the cursor of your choice
     )
