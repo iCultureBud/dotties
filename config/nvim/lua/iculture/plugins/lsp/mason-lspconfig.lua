@@ -71,7 +71,7 @@ return {
 				'dockerls',
 				'lua_ls',
 				'pylsp',
-				'tsserver',
+				'ts_ls',
 				'vimls'
 			},
 		})

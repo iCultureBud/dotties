@@ -6,20 +6,20 @@ set -gx EDITOR nvim
 set -gx MANPAGER 'nvim +Man!'
 set -gx MANWIDTH 999
 set -gx BAT_THEME 'Nord'
-set -U fish_user_paths /opt/homebrew/opt/ruby/bin $fish_user_paths
-set -Ux CHROME_EXECUTABLE /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
-set -gx LDFLAGS '-L/opt/homebrew/opt/ruby/lib'
-set -gx CPPFLAGS '-I/opt/homebrew/opt/ruby/include'
-set -gx PKG_CONFIG_PATH '/opt/homebrew/opt/ruby/lib/pkgconfig'
-set -gx GDAL_LIBRARY_PATH '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
-set -gx GEOS_LIBRARY_PATH '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'
+# set -U fish_user_paths /opt/homebrew/opt/ruby/bin $fish_user_paths
+# set -Ux CHROME_EXECUTABLE /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
+# set -gx LDFLAGS '-L/opt/homebrew/opt/ruby/lib'
+# set -gx CPPFLAGS '-I/opt/homebrew/opt/ruby/include'
+# set -gx PKG_CONFIG_PATH '/opt/homebrew/opt/ruby/lib/pkgconfig'
+# set -gx GDAL_LIBRARY_PATH '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
+# set -gx GEOS_LIBRARY_PATH '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'
 
 
 # Setting PATH for Python 3.12
-set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
+# set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
 
-fish_add_path /opt/homebrew/bin
-fish_add_path /opt/homebrew/sbin
+# fish_add_path /opt/homebrew/bin
+# fish_add_path /opt/homebrew/sbin
 
 # LFCD
 bind \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
@@ -36,13 +36,13 @@ tput setaf 5; echo "Talk is cheap. Show me the code."; \
 ###########
 
 # Package Management
-abbr -a install brew install
-abbr -a search brew search
-abbr -a update brew update
-abbr -a upgrade brew upgrade
-abbr -a remove brew remove
-abbr -a look 'brew list | grep'
-abbr -a info brew info
+abbr -a install yay -S
+abbr -a search yay -Ss
+abbr -a update yay -Syy
+abbr -a upgrade yay -Syu
+abbr -a remove yay -Rns
+abbr -a look pacman -Qi
+abbr -a orphan "pacman -Qdtq | yay -Rns -"
 
 # System
 alias sys="sudo systemctl"
@@ -69,7 +69,7 @@ alias frc="e ~/.config/fish/config.fish; source ~/.config/fish/config.fish"
 alias lg="lazygit"
 alias co="grepy"
 alias kd="k9s"
-abbr stat stat -x
+# abbr stat stat -x
 
 alias meh='echo "🤷"'
 alias wtf='echo "👀"'

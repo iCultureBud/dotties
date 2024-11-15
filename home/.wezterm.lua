@@ -2,14 +2,15 @@ local wezterm = require('wezterm')
 local act = wezterm.action
 
 return {
-	window_decorations = "RESIZE",
+	-- window_decorations = "RESIZE",
+	enable_wayland = true,
 	check_for_updates = false,
 	window_close_confirmation = 'NeverPrompt',
 	hide_tab_bar_if_only_one_tab = true,
-	font_size = 19,
-	window_background_opacity = .85,
-	macos_window_background_blur = 80,
-	native_macos_fullscreen_mode = false,
+	font_size = 14,
+	window_background_opacity = .95,
+	-- macos_window_background_blur = 80,
+	-- native_macos_fullscreen_mode = false,
 	color_scheme = 'nordfox',
 	-- color_scheme = 'dawnfox',
 	font = wezterm.font_with_fallback {
