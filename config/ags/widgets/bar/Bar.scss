@@ -1,0 +1,85 @@
+@use "sass:color";
+
+$bg_dark: #282828;
+$bg_main: #45403d;
+$fg_main: #d4be98;
+$aqua: #89b482;
+$green: #a9b665;
+$radius: 12px;
+
+window.Bar {
+    color: $fg_main;
+    border: none;
+    box-shadow: none;
+    font-weight: 600;
+    font-family: JetbrainsMono Nerd Font Propo;
+    background-color: color.scale($bg_main, $alpha: -20%);
+
+    .MainBox {
+        margin: 6px 4px;
+    }
+
+    button {
+        all: unset;
+        background-color: transparent;
+
+        &:hover label {
+            background-color: color.scale($bg_main, $alpha: -50%);
+        }
+
+        &:active label {
+            background-color: color.scale($fg_main, $alpha: -20%)
+        }
+    }
+
+    .Launcher {
+        margin-left: 14px;
+    }
+
+    .Workspaces {
+
+        button {
+            all: unset;
+            padding: 0 8px;
+            transition: all .4s;
+
+            &.active {
+                color: $aqua;
+            }
+
+            label {
+                all: unset;
+            }
+        }
+    }
+
+    .Battery label {
+        padding-left: 2px;
+    }
+
+    .CCButton {
+        margin-right: 14px;
+
+        button {
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    .MediaStatus {
+        margin: 0 4px;
+
+        .info {
+            color: $green;
+            padding: 0 14px;
+            margin-right: 8px;
+            border-radius: 15px;
+            background-color: color.scale($bg_dark, $alpha: -70%);
+        }
+    }
+}
+
+tooltip {
+    background-color: color.scale($bg_main, $alpha: -20%);
+    color: $fg_main;
+}

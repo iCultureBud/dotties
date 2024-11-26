@@ -1,0 +1,238 @@
+@use "sass:color";
+
+$bg_dark: #282828;
+$bg_main: #45403d;
+$fg_main: #d4be98;
+$aqua: #89b482;
+$green: #a9b665;
+$red: #ea6962;
+$yellow: #d8a657;
+$orange: #e78a4e;
+$purple: #d3869b;
+$radius: 12px;
+
+window.ControlCenter {
+    color: $fg_main;
+    min-height: 500px;
+    min-width: 200px;
+    font-weight: 600;
+    font-family: JetbrainsMono Nerd Font Propo;
+    border: none;
+    border-radius: $radius;
+    background-color: color.scale($bg_main, $alpha: -10%);
+    // box-shadow: 5px 5px 10px color.scale($bg_main, $alpha: -50%); // Box shadow won't follow border-radius
+
+    .MainBox {
+        padding: 8px;
+        border-radius: $radius;
+        background-color: transparent;
+    }
+
+    .InnerBox {
+        margin: 6px 4px;
+        padding: 8px;
+        border-radius: $radius;
+        // background-color: color.scale($bg_main, $alpha: -5%);
+
+        &.shadowed {
+            box-shadow: 0 0 8px color.scale($bg_dark, $alpha: -30%);
+        }
+
+        scale {
+            padding: 0;
+            margin: 8px 8px;
+            background-color: color.scale($bg_dark, $alpha: -80%);
+            border-radius: 500px;
+
+            trough {
+                min-height: 8px;
+                background-color: color.scale($bg_dark, $alpha: -80%);
+                border-radius: 500px;
+            }
+
+            highlight {
+                background-image: unset;
+                border-radius: 500px;
+            }
+
+            slider {
+                all: unset;
+                border-radius: 500px;
+            }
+        }
+    }
+
+    .PowerMenu {
+        padding: 8px 0px;
+
+        button {
+            margin: 0;
+            font-size: 14px;
+            box-shadow: 0 0 8px color.scale($bg_dark, $alpha: -30%);
+
+            &:hover {
+                color: $fg_main;
+            }
+
+            &:not(:last-child) {
+                margin-right: 12px;
+            }
+        }
+
+        .lock {
+            color: $purple;
+            background-color: color.scale($purple, $alpha: -50%);
+        }
+
+        .logout {
+            color: $aqua;
+            background-color: color.scale($aqua, $alpha: -50%);
+        }
+
+        .reboot {
+            color: $yellow;
+            background-color: color.scale($yellow, $alpha: -50%);
+        }
+
+        .power {
+            color: $red;
+            background-color: color.scale($red, $alpha: -50%);
+        }
+    }
+
+    .Networks {
+
+        icon {
+            color: $fg_main;
+            margin-right: 8px;
+        }
+
+        label {
+            color: $fg_main;
+        }
+
+        .Wifi {
+            margin-right: 8px;
+            min-width: 150px;
+            padding: 0;
+
+            button {
+                margin: 0;
+                padding: 8px;
+                min-height: 0;
+                box-shadow: none;
+                background-color: transparent;
+            }
+        }
+
+        .Vpn {
+            min-width: 150px;
+            background-color: color.scale($bg_dark, $alpha: -70%);
+
+            &.active {
+                color: $green;
+                background-color: color.scale($green, $alpha: -70%);
+            }
+
+            margin-left: 0;
+        }
+
+        .Dropdown {
+            margin-top: 8px;
+            background-image: unset;
+            border-radius: $radius;
+
+            box {
+                border-radius: $radius;
+                background-color: color.scale($bg_dark, $alpha: -60%);
+            }
+
+            button {
+                background-color: unset;
+            }
+        }
+    }
+
+    .BrightnessSlider {
+        highlight {
+            background-color: $yellow;
+        }
+    }
+
+    .VolumeSlider {
+        highlight {
+            background-color: $aqua;
+        }
+    }
+
+    .MediaPlayer {
+        min-width: 300px;
+
+        .cover-art {
+            min-width: 300px;
+            min-height: 100px;
+            border-radius: $radius;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .cover-art-gradient {
+            border-radius: $radius;
+            background: linear-gradient(
+                90deg,
+                color.scale($bg_dark, $alpha: -30%) 0%,
+                color.scale($bg_dark, $alpha: -60%) 50%,
+                color.scale($bg_dark, $alpha: -30%) 100%
+            );
+        }
+
+        .content {
+            padding: 8px;
+
+            .title {
+                label {
+                    font-weight: bold;
+                    font-size: 1.1em;
+                }
+            }
+
+            scale {
+                padding: 0;
+                margin: 8px 0;
+                background-color: color.scale($bg_dark, $alpha: -80%);
+                border-radius: 500px;
+
+                trough {
+                    min-height: 8px;
+                    background-color: color.scale($bg_dark, $alpha: -80%);
+                    border-radius: 500px;
+                }
+
+                highlight {
+                    background-image: unset;
+                    background-color: $green;
+                    border-radius: 500px;
+                }
+
+                slider {
+                    all: unset;
+                    border-radius: 500px;
+                }
+            }
+
+            centerbox.actions {
+                min-width: 220px;
+
+                button {
+                    padding: 6px;
+                    margin: 0 8px;
+                    min-width: 0;
+                    min-height: 0;
+                    color: $fg_main;
+                    box-shadow: none;
+                    background-color: $bg_main;
+                }
+            }
+        }
+    }
+}

@@ -1,6 +1,9 @@
 alacritty
 amd-ucode
-asar
+anydesk-bin
+apparmor
+asciiquarium
+aylurs-gtk-shell-git
 base
 base-devel
 blueman
@@ -24,6 +27,10 @@ gnu-free-fonts
 graphviz
 greetd
 grim
+gruvbox-plus-icon-theme
+gsimplecal
+gst-plugin-pipewire
+gst-plugins-ugly
 gtklock
 gtklock-playerctl-module
 gtklock-userinfo-module
@@ -31,6 +38,8 @@ gvfs
 htop
 hyprland-git
 hyprpaper
+ignis
+insomnia-bin
 lazygit
 less
 lf
@@ -56,8 +65,9 @@ pipewire-pulse
 plymouth
 postgresql
 pyenv
-python-setuptools
-python-virtualenv
+python-jinja
+python-materialyoucolor-git
+python-pillow
 reflector
 remmina
 ripgrep
@@ -75,7 +85,9 @@ thunar-archive-plugin
 timeshift
 tldr
 vim
-waybar-hyprland-git
+virtualfish
+vulkan-radeon
+waybar
 wdisplays
 webcord
 wezterm-git

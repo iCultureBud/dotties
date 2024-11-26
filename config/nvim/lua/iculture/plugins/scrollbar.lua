@@ -1,7 +1,7 @@
 return {
 	'petertriho/nvim-scrollbar',
 	event = { 'BufReadPre', 'BufNewFile' },
-	dependencies = 'f4z3r/gruvbox-material.nvim',
+	dependencies = 'iCultureBud/gruvbox-material.nvim',
 	config = function()
 		local colors = require('gruvbox-material.colors').get(vim.o.background, 'medium')
 

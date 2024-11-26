@@ -1,5 +1,5 @@
 return {
-	'f4z3r/gruvbox-material.nvim',
+	'iCultureBud/gruvbox-material.nvim',
 	priority = 1000,
 	config = function()
 		local colors = require('gruvbox-material.colors').get(vim.o.background, 'medium')
