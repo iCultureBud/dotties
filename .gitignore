@@ -1,3 +1,4 @@
+config/ags/@girs/*
 config/nvim/undo/*
 config/nvim/plugins/*
 config/newm/__pycache__/*
