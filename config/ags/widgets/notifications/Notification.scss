@@ -1,0 +1,115 @@
+@use "sass:color";
+
+$bg_dark: #282828;
+$bg_main: #45403d;
+$fg_main: #d4be98;
+$aqua: #89b482;
+$green: #a9b665;
+$red: #ea6962;
+$yellow: #d8a657;
+$orange: #e78a4e;
+$purple: #d3869b;
+$radius: 12px;
+
+
+window.NotificationPopups {
+    all: unset;
+}
+
+eventbox.Notification {
+
+    .MainBox {
+        margin: 4px 0;
+        color: $fg_main;
+        min-width: 400px;
+        border-radius: 12px;
+        background-color: color.scale($bg_main, $alpha: -20%);
+    }
+
+    &.critical.MainBox {
+        background-color: color.scale($red, $alpha: -20%);
+
+        .header {
+
+            .app-name {
+                color: $red;
+
+            }
+
+            .app-icon {
+                color: $red;
+            }
+        }
+    }
+
+    .Header {
+        color: $fg_main;
+        padding: 6px 10px;
+        border-top-left-radius: $radius;
+        border-top-right-radius: $radius;
+        background-color: color.scale($bg_dark, $alpha: -70%);
+
+        .app-icon {
+            margin-right: 8px;
+        }
+
+        .app-name {
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .time {
+            margin: 0 8px;
+        }
+
+        button {
+            padding: 4px;
+            min-width: 0;
+            min-height: 0;
+
+            icon {
+                color: $fg_main;
+            }
+        }
+    }
+
+    .Content {
+        padding: 8px 10px;
+
+        .summary {
+            color: $fg_main;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .body {
+            color: $fg_main;
+        }
+
+        .image {
+            margin-right: 16px;
+            border-radius: 12px;
+            min-width: 80px;
+            min-height: 80px;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
+    .Actions {
+        margin: 16px;
+        margin-top: 0;
+
+        button {
+            margin: 0 6px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

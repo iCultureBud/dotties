@@ -2,6 +2,7 @@
 
 import { Bar } from "./widgets/bar/Bar"
 import { ControlCenter } from "./widgets/controlc/ControlCenter";
+import { NotificationPopups } from "./widgets/notifications/NotificationPopups";
 // import AppLauncher from "./widgets/launcher/AppLauncher";
 
 import style from "./style.scss";
@@ -16,20 +17,25 @@ App.start({
 	instanceName: "iculture-shell",
 	main: () => {
 		// Initial setup for monitors.
-		const bars = new Map<Gdk.Monitor, Gtk.Widget>()
-		for (const gdkMonitor of App.get_monitors())
-			bars.set(gdkMonitor, Bar(gdkMonitor));
+		const widgets = new Map<Gdk.Monitor, Gtk.Widget>()
+		for (const gdkMonitor of App.get_monitors()) {
+			widgets.set(gdkMonitor, Bar(gdkMonitor));
+			widgets.set(gdkMonitor, NotificationPopups(gdkMonitor));
+		}
 
 		// Create windows for newly connected monitors.
 		// NOTE: Need to be delayed because workspaces are not initialized immediately.
 		App.connect("monitor-added", (_, gdkMonitor) => {
-			setTimeout(() => bars.set(gdkMonitor, Bar(gdkMonitor)), 1000);
+			setTimeout(() => {
+				widgets.set(gdkMonitor, Bar(gdkMonitor));
+				widgets.set(gdkMonitor, NotificationPopups(gdkMonitor));
+			}, 1000);
 		})
 
 		// Remove windows for removed monitors.
 		App.connect("monitor-removed", (_, gdkMonitor) => {
-			bars.get(gdkMonitor)?.destroy();
-			bars.delete(gdkMonitor);
+			widgets.get(gdkMonitor)?.destroy();
+			widgets.delete(gdkMonitor);
 		})
 
 		ControlCenter();
