@@ -1,0 +1,58 @@
+[colors]
+ansi = [
+	"#3c3836",
+	"#ea6962",
+	"#a9b665",
+	"#d8a657",
+	"#7daea3",
+	"#d3869b",
+	"#89b482",
+	"#d4be98"
+]
+
+brights = [
+	"#3c3836",
+	"#ea6962",
+	"#a9b665",
+	"#d8a657",
+	"#7daea3",
+	"#d3869b",
+	"#89b482",
+	"#d4be98"
+]
+
+background    = "#282828"
+foreground    = "#d4be98"
+cursor_bg     = "#d4be98"
+cursor_fg     = "#282828"
+cursor_border = "#d4be98"
+
+[colors.indexed]
+
+[colors.tab_bar]
+background = "#282828"
+
+[colors.tab_bar.active_tab]
+bg_color = "#3C3836"
+fg_color = "#DDC7A1"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#282828"
+fg_color = "#504945"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#D4BE98"
+fg_color = "#3C3836"
+
+[colors.tab_bar.new_tab]
+bg_color = "#D4BE98"
+fg_color = "#3C3836"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#D4BE98"
+fg_color = "#3C3836"
+
+
+[metadata]
+name = 'Gruvbox Material Dark (iCulture)'
+# origin_url = 'https://github.com/Gogh-Co/Gogh'

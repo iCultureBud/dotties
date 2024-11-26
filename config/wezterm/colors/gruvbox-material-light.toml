@@ -1,0 +1,53 @@
+[colors]
+ansi = [
+	"#F2E5BC",
+	"#C14A4A",
+	"#6C782E",
+	"#B47109",
+	"#45707A",
+	"#945E80",
+	"#4C7A5D",
+	"#654735"
+]
+
+brights = [
+	"#F2E5BC",
+	"#C14A4A",
+	"#6C782E",
+	"#B47109",
+	"#45707A",
+	"#945E80",
+	"#4C7A5D",
+	"#654735"
+]
+
+background    = "#FBF1C7"
+foreground    = "#654735"
+cursor_bg     = "#654735"
+cursor_fg     = "#FBF1C7"
+cursor_border = "#654735"
+
+[colors.tab_bar.active_tab]
+bg_color = "#3C3836"
+fg_color = "#DDC7A1"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#282828"
+fg_color = "#504945"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#D4BE98"
+fg_color = "#3C3836"
+
+[colors.tab_bar.new_tab]
+bg_color = "#D4BE98"
+fg_color = "#3C3836"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#D4BE98"
+fg_color = "#3C3836"
+
+
+[metadata]
+name = 'Gruvbox Material Light (iCulture)'
+# origin_url = 'https://github.com/Gogh-Co/Gogh'
