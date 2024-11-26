@@ -20,7 +20,7 @@ window.ControlCenter {
     border: none;
     border-radius: $radius;
     background-color: color.scale($bg_main, $alpha: -10%);
-    // box-shadow: 5px 5px 10px color.scale($bg_main, $alpha: -50%); // Box shadow won't follow border-radius
+    // box-shadow: 0 0 10px color.scale($bg_main, $alpha: -50%); // Box shadow won't follow border-radius
 
     .MainBox {
         padding: 8px;
@@ -166,9 +166,8 @@ window.ControlCenter {
     }
 
     .MediaPlayer {
-        min-width: 300px;
-
         .cover-art {
+            padding: 0;
             min-width: 300px;
             min-height: 100px;
             border-radius: $radius;
@@ -180,14 +179,14 @@ window.ControlCenter {
             border-radius: $radius;
             background: linear-gradient(
                 90deg,
-                color.scale($bg_dark, $alpha: -30%) 0%,
-                color.scale($bg_dark, $alpha: -60%) 50%,
-                color.scale($bg_dark, $alpha: -30%) 100%
+                color.scale($bg_dark, $alpha: -10%) 0%,
+                color.scale($bg_dark, $alpha: -50%) 50%,
+                color.scale($bg_dark, $alpha: -10%) 100%
             );
         }
 
         .content {
-            padding: 8px;
+            margin: 8px;
 
             .title {
                 label {
@@ -198,13 +197,13 @@ window.ControlCenter {
 
             scale {
                 padding: 0;
-                margin: 8px 0;
-                background-color: color.scale($bg_dark, $alpha: -80%);
+                margin: 12px 0 8px 0;
+                background-color: color.scale($fg_main, $alpha: -80%);
                 border-radius: 500px;
 
                 trough {
                     min-height: 8px;
-                    background-color: color.scale($bg_dark, $alpha: -80%);
+                    background-color: color.scale($fg_main, $alpha: -80%);
                     border-radius: 500px;
                 }
 
@@ -225,7 +224,7 @@ window.ControlCenter {
 
                 button {
                     padding: 6px;
-                    margin: 0 8px;
+                    margin: 0 10px;
                     min-width: 0;
                     min-height: 0;
                     color: $fg_main;

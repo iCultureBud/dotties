@@ -40,8 +40,8 @@ export function MediaPlayer({ player }: { player: Mpris.Player }) {
 			: "media-playback-start-symbolic"
 	);
 
-	return <overlay className="InnerBox shadowed MediaPlayer">
-		<box className="cover-art" css={coverArt}>
+	return <overlay className="MediaPlayer">
+		<box className="InnerBox shadowed cover-art" css={coverArt}>
 			<box className="cover-art-gradient">
 			<box vertical className="content">
 				<box className="title">
