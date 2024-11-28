@@ -34,10 +34,9 @@ export function Networks() {
 				className={`InnerBox shadowed Vpn ${vpnName() ? "active" : ""}`}
 			>
 				<icon
-					icon={vpnName()
-						? "network-vpn-symbolic"
-						: "network-vpn-disconnected-symbolic"
-					} />
+					icon={bind(vpnName).as(name =>
+						name ? "network-vpn-symbolic" : "network-vpn-disconnected-symbolic")}
+				/>
 				{vpnName() ?? "disconnected"}
 			</box>
 		</box>
