@@ -16,12 +16,11 @@ window.Bar {
     background-color: color.scale($bg_main, $alpha: -20%);
 
     .MainBox {
-        margin: 6px 4px;
+        padding: 6px 4px;
     }
 
     button {
         all: unset;
-        background-color: transparent;
 
         &:hover label {
             background-color: color.scale($bg_main, $alpha: -50%);
@@ -67,7 +66,6 @@ window.Bar {
     }
 
     .MediaStatus {
-        margin: 0 4px;
 
         .info {
             color: $green;

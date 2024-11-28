@@ -62,7 +62,7 @@ function Time({ format = "%Y-%m-%d - %H:%M" }) {
 // Volume Icon
 //
 function Volume() {
-	const speaker = Wp.get_default()?.audio.defaultSpeaker!
+	const speaker = Wp.get_default()?.audio.defaultSpeaker!;
 
 	return (
 		<box className="MainBox Volume">
@@ -160,6 +160,10 @@ export function Bar(monitor: Gdk.Monitor) {
 	const anchor = Astal.WindowAnchor.TOP
 		| Astal.WindowAnchor.LEFT
 		| Astal.WindowAnchor.RIGHT;
+
+	// const gtkIconTheme = Gtk.IconTheme.get_default();
+	// print(JSON.stringify(gtkIconTheme.list_icons(null)));
+
 
 	// TODO: Find a way to show only one player at once.
 	return (
