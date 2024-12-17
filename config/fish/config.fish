@@ -5,14 +5,14 @@ starship init fish | source
 set -gx EDITOR nvim
 set -gx MANPAGER 'nvim +Man!'
 set -gx MANWIDTH 999
-set -gx BAT_THEME 'Nord'
-set -U fish_user_paths /opt/homebrew/opt/ruby/bin $fish_user_paths
-set -Ux CHROME_EXECUTABLE /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
-set -gx LDFLAGS '-L/opt/homebrew/opt/ruby/lib'
-set -gx CPPFLAGS '-I/opt/homebrew/opt/ruby/include'
-set -gx PKG_CONFIG_PATH '/opt/homebrew/opt/ruby/lib/pkgconfig'
-set -gx GDAL_LIBRARY_PATH '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
-set -gx GEOS_LIBRARY_PATH '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'
+set -gx BAT_THEME 'gruvbox-dark'
+# set -U fish_user_paths /opt/homebrew/opt/ruby/bin $fish_user_paths
+# set -Ux CHROME_EXECUTABLE /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
+# set -gx LDFLAGS '-L/opt/homebrew/opt/ruby/lib'
+# set -gx CPPFLAGS '-I/opt/homebrew/opt/ruby/include'
+# set -gx PKG_CONFIG_PATH '/opt/homebrew/opt/ruby/lib/pkgconfig'
+# set -gx GDAL_LIBRARY_PATH '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
+# set -gx GEOS_LIBRARY_PATH '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'
 
 
 # Setting PATH for Python 3.12
@@ -22,8 +22,8 @@ fish_add_path /opt/homebrew/bin
 fish_add_path /opt/homebrew/sbin
 
 # LFCD
-bind \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
-bind \cf 'set old_tty (stty -g); stty sane; lf; stty $old_tty; commandline -f repaint'
+# bind \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
+bind \cf 'set old_tty (stty -g); stty sane; yazi; stty $old_tty; commandline -f repaint'
 
 # Greeting
 set -U fish_greeting
@@ -36,11 +36,11 @@ tput setaf 5; echo "Talk is cheap. Show me the code."; \
 ###########
 
 # Package Management
-abbr -a install brew install
-abbr -a search brew search
-abbr -a update brew update
-abbr -a upgrade brew upgrade
-abbr -a remove brew remove
+abbr -a install yay -S
+abbr -a search yay -Ss
+abbr -a update yay -Sy
+abbr -a upgrade yay -Syu
+abbr -a remove yay -Rns
 abbr -a look 'brew list | grep'
 abbr -a info brew info
 

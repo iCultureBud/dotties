@@ -1,0 +1,14 @@
+profile undocked {
+	output "eDP-1" enable scale 1.25
+}
+
+profile home {
+	output "eDP-1" disable
+	output "DP-2" enable position 1536,0 scale 1.25
+}
+
+profile home {
+	output "eDP-1" disable
+	output "DP-2" enable position 2048,0 scale 1.25
+	output "HDMI-A-1" enable position 0,0 scale 1.25
+}

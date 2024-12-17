@@ -1,0 +1,156 @@
+[
+	{
+		"name": "main",
+		// "output": "DP-2",
+		"output": "HDMI-A-1",
+		"layer": "top",
+		"position": "top",
+		"height": 34,
+		"spacing": 14,
+		"reload_style_on_change": true,
+		"modules-left": [
+			"custom/launcher",
+			"hyprland/workspaces",
+			"hyprland/window",
+		],
+		"modules-center": ["clock"],
+		"modules-right": [
+			"pulseaudio",
+			"network",
+			"backlight",
+			// "cpu",
+			"battery",
+			"custom/power"
+		],
+
+		// Modules configuration
+		"custom/launcher": {
+			"format": "<span font='12'></span>"
+		},
+		"hyprland/workspaces": {
+			"format": "<span font='12'>{icon}</span>",
+			"format-icons": {
+				"default": "󰄰",
+				"active": "󰄯"
+			},
+			"on-click": "activate"
+		},
+		"hyprland/window": {
+			"format": "<span font='12'>{class}</span>",
+			"max-length": 20,
+			"rewrite": {
+				"^(?!.*\\S).*": ""
+			}
+		},
+		"custom/media": {
+			"format": "{}",
+			"escape": true,
+			"return-type": "json",
+			"max-length": 40,
+			"on-click": "playerctl play-pause",
+			"on-click-right": "playerctl stop",
+			"on-scroll-up": "playerctl next",
+			"on-scroll-down": "playerctl previous",
+			"exec": "~/.config/waybar/scripts/mediaplayer.py 2> /dev/null"
+		},
+		"clock": {
+			"format": "<span font='11'>{:%H:%M - %Y-%m-%d}</span>",
+			"tooltip": false,
+			"on-click": "gsimplecal"
+		},
+		"pulseaudio": {
+			"format": "<span font='12'>{icon} </span><span font='11'>{volume}%</span>",
+			"format-muted": "<span font='12' rise='-500'>󰝟 </span><span font='11'>Muted</span>",
+			"format-icons": {
+				"headphone": "󰋋",
+				"hands-free": "󰋋",
+				"headset": "󰋋",
+				"phone": "󰏲",
+				"portable": "󰏲",
+				"car": "󰄋",
+				"default": ["", "", ""]
+			},
+			"on-click": "pavucontrol"
+		},
+		"network": {
+			"tooltip": false,
+			"format-wifi": "<span font='12'>󰖩 </span><span font='11'>{essid}</span>",
+			"format-ethernet": "<span font='12'>󰈀 </span><span font='11'>{ipaddr}</span>",
+			"format-linked": "<span font='12'>󰈂 </span><span font='11'>Disconnected</span>",
+			"format-disconnected": "<span font='12'>󰖪 </span><span font='11'>Disconnected</span>",
+			"format-alt": "<span font='11'>{ifname}: {ipaddr}/{cidr}</span>"
+		},
+		"backlight": {
+			"tooltip": false,
+			"device": "amd_backlight",
+			"format": "<span font='12'>{icon} </span><span font='11'>{percent}%</span>",
+			"format-icons": ["󰃞", "󰃟", "󰃠"],
+			"on-scroll-up": "brightnessctl s 2%+",
+			"on-scroll-down": "brightnessctl s 2%-"
+		},
+		"cpu": {
+			"interval": 5,
+			"format": "{icon0} {icon1} {icon2} {icon3}",
+			"format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
+		},
+		"battery": {
+			"states": {
+				"warning": 30,
+				"critical": 15
+			},
+			"format": "<span font='12'>{icon} </span><span font='11'>{capacity}%</span>",
+			"format-charging": "<span font='12'>󰂄 </span><span font='11'>{capacity}%</span>",
+			"format-plugged": "<span font='12'>󰂄 </span><span font='11'>{capacity}%</span>",
+			"format-alt": "<span font='12'>{time} {icon}</span>",
+			"format-full": "<span font='12'>󰁹 </span><span font='11'>{capacity}%</span>",
+			"format-icons": [
+				"󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
+			]
+		},
+		"custom/power": {
+			"tooltip": false,
+			"format": "<span font='16'>󰐥</span>",
+			"on-click": "~/.config/waybar/scripts/poweroff.sh"
+		}
+	},
+	{
+		"name": "main",
+		"output": "eDP-1",
+		"layer": "bottom",
+		"position": "top",
+		"height": 34,
+		"modules-left": [],
+		"modules-center": ["hyprland/workspaces"],
+		"modules-right": [],
+
+		// Modules configuration
+		"hyprland/workspaces": {
+			"format": "<span font='14'>{icon}</span>",
+			"format-icons": {
+				"default": "󰄰",
+				"active": "󰄯"
+			},
+			"on-click": "activate"
+		},
+	},
+	{
+		"name": "second",
+		"output": "DP-2",
+		"layer": "bottom",
+		"position": "top",
+		"height": 34,
+		"modules-left": [],
+		"modules-center": ["hyprland/workspaces"],
+		"modules-right": [],
+
+		// Modules configuration
+		"hyprland/workspaces": {
+			"format": "<span font='14'>{icon}</span>",
+			"format-icons": {
+				"default": "󰄰",
+				"active": "󰄯"
+			},
+			"on-click": "activate"
+		},
+	},
+]

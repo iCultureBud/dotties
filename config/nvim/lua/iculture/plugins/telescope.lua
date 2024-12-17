@@ -16,6 +16,7 @@ return {
 				file_ignore_patterns = {
 					'node_modules',
 					'vendor',
+					-- '@girs',
 					'%.map',
 					'%.log',
 					'%.min.js',

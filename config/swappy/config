@@ -1,0 +1,5 @@
+[Default]
+save_filename_format=swappy_%Y-%m-%d_%H-%M-%S.png
+save_dir=$HOME/Pictures/screenshots/
+paint_mode=rectangle
+custom_color=rgba(234, 105, 98, 1)

@@ -184,14 +184,21 @@ export function Bar(monitor: Gdk.Monitor) {
 				<box><Time /></box>
 
 				<box hexpand halign={Gtk.Align.END} >
-					{bind(mpris, "players").as(players =>
-						players[0] ? <MediaStatus player={players[0]} /> : ""
-					)}
+					<button
+						cursor="pointer"
+						className="CCButton"
+						onClicked={() => toggleWindow("ControlCenter")}>
+						<box>
+							{bind(mpris, "players").as(players =>
+								players[0] ? <MediaStatus player={players[0]} /> : ""
+							)}
 
-					<Volume />
-					<Wifi />
-					<BatteryLevel />
-					<CCButton />
+							<Volume />
+							<Wifi />
+							<BatteryLevel />
+						</box>
+					</button>
+					{/* <CCButton /> */}
 				</box>
 			</centerbox>
 		</window>

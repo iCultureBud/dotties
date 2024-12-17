@@ -1,7 +1,8 @@
 import { i_Lock, i_Logout, i_Reboot, i_Power } from "../../utils/icons";
-import { MediaPlayer } from "./mediaplayer/MediaPlayer";
-import { Networks } from "./networks/Networks";
 import { AudioControls } from "./audiocontrols/AudioControls";
+import { BluetoothC } from "./bluetooth/Bluetooth";
+import { Networks } from "./networks/Networks";
+import { MediaPlayer } from "./mediaplayer/MediaPlayer";
 
 import { bind, exec, Variable } from "astal";
 import { Astal, Gdk, App } from "astal/gtk3";
@@ -92,6 +93,7 @@ export function ControlCenter() {
 				<PowerMenu />
 				<Networks />
 				<AudioControls />
+				{/* <BluetoothC /> */}
 				<BrightnessSlider />
 				<VolumeSlider />
 

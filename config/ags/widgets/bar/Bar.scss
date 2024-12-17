@@ -57,11 +57,23 @@ window.Bar {
     }
 
     .CCButton {
-        margin-right: 14px;
+        // margin: 0;
+        // padding: 0;
+        margin-right: 12px;
 
-        button {
-            margin: 0;
-            padding: 0;
+        >box {
+            padding: 0 12px;
+            border-radius: 500px;
+        }
+
+        &:active {
+            label {
+                background-color: transparent;
+            }
+        }
+
+        &:hover>box {
+            background-color: color.scale($bg_dark, $alpha: -70%);
         }
     }
 

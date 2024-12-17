@@ -26,16 +26,6 @@ env = ICON_THEME,Gruvbox-Plus-Dark
 # OTHER
 env = MOZ_ENABLE_WAYLAND,1
 
-# Startup
-exec-once = $HOME/.config/hypr/scripts/startup.sh
-exec-once = hyprctl setcursor Bibata-Modern-Ice 20
-exec-once = hyprpm reload
-exec-once = hyprpaper &
-exec-once = mako &
-exec-once = iculture-shell &
-exec-once = wlsunset -l 46.9 -L 15.2 -t 5800 &
-exec-once = wl-paste -t text --watch clipman store &
-
 ##################
 # Hyprland Setup #
 ##################
@@ -48,13 +38,24 @@ exec-once = wl-paste -t text --watch clipman store &
 # monitor = DP-2, 2560x1440, 2048x0, 1.25, transform, 1
 
 # Office (keyboard base)
-# monitor = HDMI-A-1, 2560x1440, 0x560, 1.25
-# monitor = DP-2, 2560x1440, 2048x0, 1.25, transform, 1
-# monitor = eDP-1, preferred, 3200x900, 1.25
+monitor = HDMI-A-1, 2560x1440, 0x560, 1.25
+monitor = DP-2, 2560x1440, 2048x0, 1.25, transform, 1
+monitor = eDP-1, preferred, 3200x900, 1.25
 
 # Home
-monitor = DP-2, 2560x1440, 0x0, 1.25
-monitor = eDP-1, preferred, 2048x0, 1.25
+# monitor = eDP-1, preferred, 0x0, 1.25
+# monitor = DP-2, 2560x1440, 1536x0, 1.25
+
+
+# Startup
+exec-once = $HOME/.config/hypr/scripts/startup.sh
+exec-once = hyprctl setcursor Bibata-Modern-Ice 20
+exec-once = wlsunset -l 46.9 -L 15.2 -t 5800 &
+exec-once = wl-paste -t text --watch clipman store &
+exec-once = hyprpaper &
+exec-once = ags run &
+exec-once = mako &
+exec-once = hyprpm reload
 
 # Input configuration
 input {
@@ -107,10 +108,9 @@ decoration {
 	}
 
 	blur {
-		enabled = true
+		enabled = yes
 		size = 1
 		passes = 3
-		special = true
 	}
 }
 
@@ -159,11 +159,8 @@ bind = $mainMod, RETURN, exec, wezterm start --class wezterm
 bind = $mainMod, SPACE, exec, pkill wofi || wofi --show drun -I -W 30% -p ""
 bind = $mainMod, m, exec, spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
 
-# Astal
-bind = $mainMod, down, exec, astal --instance iculture-shell -t ControlCenter
-
 # Extras
-bind = $mainMod SHIFT, c, exec, clipman pick -t wofi
+bind = $mainMod, SHIFT c, exec, clipman pick -t wofi
 bind = $mainMod, s, exec, grim -g "$(slurp)" - | swappy -f -
 bind = $mainMod SHIFT, s, exec, grim -o $(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name') ~/Pictures/screenshots/$(date +%Y-%m-%d-%s).png
 
@@ -217,57 +214,33 @@ bind = $mainMod CTRL, k, resizeactive, 0 -20
 bind = $mainMod CTRL, j, resizeactive, 0 20
 bind = $mainMod CTRL, l, resizeactive, 20 0
 
-# Function keys
-bind = , XF86Search, exec, pkill wofi || wofi --show drun -I -W 30% -p ""
-bind = , Menu, exec, astal --instance iculture-shell -t ControlCenter
-
-bind = , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+
-bind = , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-
-bind = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-bind = , XF86AudioNext, exec, playerctl next
-bind = , XF86AudioPrev, exec, playerctl previous
-bind = , XF86AudioPlay, exec, playerctl play-pause
-bind = , XF86AudioPause, exec, playerctl play-pause
-
+# Media Keys
+# -- Function keys --
+bind=, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%+
+bind=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 3%-
+bind=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bind=, XF86AudioNext, exec, playerctl next
+bind=, XF86AudioPrev, exec, playerctl previous
+bind=, XF86AudioPlay, exec, playerctl play-pause
+bind=, XF86AudioPause, exec, playerctl play-pause
 
 # Lid switches
 # bindl = , switch:Lid Switch, exec, gtklock
 bindl = , switch:on:Lid Switch, exec, hyprctl keyword monitor "eDP-1, disable"
 bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, preferred, 2048x0, 1.25"
-# bindl = , switch:off:Lid Switch, exec, hyprctl keyword monitor "eDP-1, preferred, 3200x900, 1.25"
-
 
 # Window specific rules
-windowrulev2=float, class:org.gnome.Nautilus
+windowrule=move 897 50, title:^(gsimplecal)
 
-windowrulev2=float, title:Volume Control
-windowrulev2=move 100%-w-20 50, title:Volume Control
-
-windowrulev2=float, class:blueman-manager
-windowrulev2=size 530 450, class:blueman-manager
-windowrulev2=move 100%-w-20 50, class:blueman-manager
-
-windowrulev2=float, initialTitle:DevTools
-windowrulev2=size 670 900, initialTitle:DevTools
-windowrulev2=move 100%-w-20 50, initialTitle:DevTools
-
-windowrulev2=float, class:brave-nngceckbapebfimnlniiiahkandclblb-Default
-windowrulev2=size 330 580, class:brave-nngceckbapebfimnlniiiahkandclblb-Default
-windowrulev2=move 100%-w-20 50, class:brave-nngceckbapebfimnlniiiahkandclblb-Default
-
-windowrulev2=move 897 50, title:gsimplecal
-
-
-# Blurry layers
+windowrule=float, title:^(Volume Control)
+windowrule=move 1024 50, title:^(Volume Control)
 layerrule = blur, waybar
+
+# Blurry notifications
 layerrule = blur, notifications
 layerrule = ignorezero, notifications
 layerrule = blur, gtk-layer-shell
 layerrule = ignorezero, gtk-layer-shell
-layerrule = blur, iculture-shell
-layerrule = ignorezero, iculture-shell
-layerrule = blur, wofi
-layerrule = ignorezero, wofi
 
 # Plugins
 plugin {

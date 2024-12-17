@@ -94,14 +94,14 @@ class NotifiationMap implements Subscribable {
 }
 
 export function NotificationPopups(gdkmonitor: Gdk.Monitor) {
-	const anchor = Astal.WindowAnchor.TOP | Astal.WindowAnchor.RIGHT;
+	const anchor = Astal.WindowAnchor.BOTTOM | Astal.WindowAnchor.RIGHT;
 	const notifs = new NotifiationMap();
 
 	return <window
 		name="NotificationPopups"
 		className="NotificationPopups"
 		namespace="iculture-shell"
-		marginTop={4}
+		marginBottom={4}
 		marginRight={4}
 		anchor={anchor}
 		gdkmonitor={gdkmonitor}
