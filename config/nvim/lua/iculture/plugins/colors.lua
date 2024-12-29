@@ -2,9 +2,7 @@ return {
 	'iCultureBud/gruvbox-material.nvim',
 	priority = 1000,
 	config = function()
-		local colors = require('gruvbox-material.colors').get(vim.o.background, 'medium')
-		local gruvbox = require('gruvbox-material')
-		gruvbox.setup({
+		require('gruvbox-material').setup({
 			contrast = 'medium',
 			background = {
 				transparent = true,
@@ -13,13 +11,14 @@ return {
 
 
 		-- Set theme global
-		vim.api.nvim_command('colorscheme gruvbox-material')
+		-- vim.api.nvim_command('colorscheme gruvbox-material')
 
 		vim.api.nvim_set_hl(0, 'GitSignsAdd', { bg = 'none' })
 		vim.api.nvim_set_hl(0, 'GitSignsChange', { bg = 'none' })
 		vim.api.nvim_set_hl(0, 'GitSignsDelete', { bg = 'none' })
 
 		-- Set colors for indentation
+		local colors = require('gruvbox-material.colors').get(vim.o.background, 'medium')
 		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent1', { fg = colors.aqua })
 		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent2', { fg = colors.yellow })
 		vim.api.nvim_set_hl(0, 'IndentBlanklineIndent3', { fg = colors.blue })

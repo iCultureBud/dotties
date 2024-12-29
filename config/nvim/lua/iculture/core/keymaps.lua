@@ -2,16 +2,16 @@
 vim.g.mapleader = " "
 
 -- Mappings for NvimTree
-vim.keymap.set('n', '<C-e>', '<Cmd>NvimTreeToggle<CR>', { desc = "Toggle NvimTree" })
+vim.keymap.set('n', '<C-e>', '<Cmd>NvimTreeToggle<CR>', { desc = 'Toggle NvimTree' })
 
 -- Mapping for copy/paste
-vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = "Copy to clipboard" })
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Copy to clipboard' })
 vim.keymap.set('n', '<leader>Y', [[gg"+yG]])
-vim.keymap.set('x', '<leader>p', [["_dP]])
+vim.keymap.set('x', '<leader>p', [["_dP]], { desc = 'Paste without overwriting reg' })
 vim.keymap.set('n', '<leader>v', [["+p]])
 
 -- Autocmd to disable search highlights
-vim.keymap.set('n', '<esc>', ':nohl<CR>', { desc = "Clear search highlights" })
+vim.keymap.set('n', '<esc>', ':nohl<CR>', { desc = 'Clear search highlights' })
 
 -- Moving Text
 vim.keymap.set('v', 'J', [[:m '>+1<CR>gv=gv]])
