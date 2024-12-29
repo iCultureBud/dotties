@@ -6,14 +6,11 @@ set -gx EDITOR nvim
 set -gx MANPAGER 'nvim +Man!'
 set -gx MANWIDTH 999
 set -gx BAT_THEME 'gruvbox-dark'
-# set -U fish_user_paths /opt/homebrew/opt/ruby/bin $fish_user_paths
-# set -Ux CHROME_EXECUTABLE /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
-# set -gx LDFLAGS '-L/opt/homebrew/opt/ruby/lib'
-# set -gx CPPFLAGS '-I/opt/homebrew/opt/ruby/include'
-# set -gx PKG_CONFIG_PATH '/opt/homebrew/opt/ruby/lib/pkgconfig'
-# set -gx GDAL_LIBRARY_PATH '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
-# set -gx GEOS_LIBRARY_PATH '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'
-
+set -U fish_user_paths /opt/homebrew/opt/ruby/bin $fish_user_paths
+set -Ux CHROME_EXECUTABLE /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
+set -gx LDFLAGS '-L/opt/homebrew/opt/ruby/lib'
+set -gx CPPFLAGS '-I/opt/homebrew/opt/ruby/include'
+set -gx PKG_CONFIG_PATH '/opt/homebrew/opt/ruby/lib/pkgconfig'
 
 # Setting PATH for Python 3.12
 set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
@@ -36,11 +33,11 @@ tput setaf 5; echo "Talk is cheap. Show me the code."; \
 ###########
 
 # Package Management
-abbr -a install yay -S
-abbr -a search yay -Ss
-abbr -a update yay -Sy
-abbr -a upgrade yay -Syu
-abbr -a remove yay -Rns
+abbr -a install brew install
+abbr -a search brew search
+abbr -a update brew update
+abbr -a upgrade brew upgrade
+abbr -a remove brew remove
 abbr -a look 'brew list | grep'
 abbr -a info brew info
 
