@@ -1,1 +1,2 @@
-home/.zshrc merge=home
+config/fish/* merge=ours
+home/.wezterm.lua merge=ours
