@@ -20,7 +20,7 @@ fish_add_path /opt/homebrew/sbin
 
 # LFCD
 # bind \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
-bind \cf 'set old_tty (stty -g); stty sane; yazi; stty $old_tty; commandline -f repaint'
+bind \co 'set old_tty (stty -g); stty sane; yazi; stty $old_tty; commandline -f repaint'
 
 # Greeting
 set -U fish_greeting
@@ -49,10 +49,6 @@ alias jo="sudo journalctl"
 alias ..="cd .."
 alias ...="cd ../.."
 alias rd="rm -rf"
-alias gr="cd ~/Repos;lfcd"
-alias pc="nvim ~/.config/newm/config.py"
-alias hc="nvim ~/.config/hypr/hyprland.conf"
-alias nc="nvim ~/.config/nvim/init.vim"
 alias e="nvim"
 alias se="sudo nvim"
 alias l="lsd"
@@ -60,7 +56,7 @@ alias ls="lsd -l"
 alias la="lsd -a"
 alias lsa="lsd -la"
 alias lt="l --tree"
-alias dot="lf ~/.config"
+alias dot="yazi ~/.config"
 alias zrc="e ~/.zshrc; source ~/.zshrc"
 alias frc="e ~/.config/fish/config.fish; source ~/.config/fish/config.fish"
 alias lg="lazygit"
