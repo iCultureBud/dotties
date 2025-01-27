@@ -105,7 +105,7 @@ return {
 		-- Setup clang
 		lspconfig.clangd.setup({
 			init_options = {
-				fallbackFlags = {'--std=c++20'}
+				fallbackFlags = {'--std=c++17'}
 			},
 		})
 

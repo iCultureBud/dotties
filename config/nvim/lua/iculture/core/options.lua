@@ -8,6 +8,7 @@ vim.cmd([[
 	set tabstop=4
 	set softtabstop=4
 	set shiftwidth=4
+	set expandtab
 	set scrolloff=8
 	set relativenumber nu
 	set wrap
@@ -17,7 +18,6 @@ vim.cmd([[
 	set autoindent
 	set hidden
 	set nobackup
-	set noexpandtab
 	set noerrorbells
 	set cursorline
 	set noswapfile
@@ -28,7 +28,5 @@ vim.cmd([[
 	set undodir=~/.local/share/undo
 	set mouse=a
 	set iskeyword=@,48-57,_,192-255,$
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-	autocmd FileType json setlocal expandtab
 	filetype plugin indent on
 ]])
