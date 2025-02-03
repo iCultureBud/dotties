@@ -1,6 +1,6 @@
 vim.cmd([[
 	set path+=**
-	set cc=120
+	set cc=100
 	set wildignore+=**/node_modules/*
 	set wildignore+=**/.git/*
 	set wildignore+=*.log*
