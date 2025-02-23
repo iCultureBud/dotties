@@ -20,7 +20,7 @@ fish_add_path /opt/homebrew/sbin
 
 # LFCD
 # bind \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
-bind \co 'set old_tty (stty -g); stty sane; yazi; stty $old_tty; commandline -f repaint'
+bind \cf 'set old_tty (stty -g); stty sane; yazi; stty $old_tty; commandline -f repaint'
 
 # Greeting
 set -U fish_greeting
@@ -63,6 +63,7 @@ alias lg="lazygit"
 alias co="grepy"
 alias kd="k9s"
 abbr stat stat -x
+abbr -a --set-cursor batf 'tail -f % | bat --paging=never -l log'
 
 alias meh='echo "🤷"'
 alias wtf='echo "👀"'
