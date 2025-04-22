@@ -85,8 +85,14 @@ return {
 					ellipsis_char = '...',
 					symbol_map = { Codeium = "", }
 				})
-			}
+			},
+            window = {
+                documentation = cmp.config.window.bordered(),
+	            completion = cmp.config.window.bordered(),
+            }
 		})
+
+        vim.opt.pumblend = 0
 
 		-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 		cmp.setup.cmdline('/', {
