@@ -51,7 +51,7 @@ return {
 		{ key = "J", mods = "CTRL|SHIFT", action = act.ScrollByLine(2) },
 		{ key = "F", mods = "CMD|SHIFT",  action = act.ToggleFullScreen },
 		-- { key = "t", mods = "CTRL", action = act.SpawnTab "DefaultDomain" },
-		{ key = "w", mods = "CTRL|SHIFT", action = act.CloseCurrentPane { confirm = false } },
+		{ key = "w", mods = "CMD", action = act.CloseCurrentPane { confirm = false } },
 	},
 	colors = {
 		tab_bar = {
