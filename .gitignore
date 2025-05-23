@@ -1,6 +1,7 @@
 config/ags/@girs/*
 config/nvim/undo/*
 config/nvim/plugins/*
+config/nvim/lazy-lock.json
 config/newm/__pycache__/*
 config/spicetify/Extracted/*
 config/spicetify/Backup/*
