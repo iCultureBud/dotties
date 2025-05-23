@@ -28,5 +28,16 @@ vim.cmd([[
 	set undodir=~/.local/share/undo
 	set mouse=a
 	set iskeyword=@,48-57,_,192-255,$
+	autocmd FileType * setlocal expandtab
 	filetype plugin indent on
 ]])
+
+vim.o.foldcolumn = 'auto'
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.o.foldtext = require('iculture.core.folds')
+vim.o.foldlevel = 99
+vim.o.foldnestmax = 4
+vim.o.foldminlines = 5
+vim.o.foldlevelstart = 0
+vim.o.fillchars = 'eob: ,fold: ,foldopen:,foldsep: ,foldclose:'
