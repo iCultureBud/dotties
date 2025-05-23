@@ -20,12 +20,12 @@ export function MediaStatus({ player }: { player: Mpris.Player }) {
 	// }
 
 	return <box className="MainBox MediaStatus">
-		<button cursor="pointer" onClicked={() => player.play_pause()}>
-			{bind(player, "playbackStatus").as(status =>
+		<icon
+			icon={bind(player, "playbackStatus").as(status =>
 				status === Mpris.PlaybackStatus.PLAYING
-					? <icon icon="media-playback-pause-symbolic" />
-					: <icon icon="media-playback-start-symbolic" />)}
-		</button>
+					? "media-playback-pause-symbolic"
+					: "media-playback-start-symbolic")}
+		/>
 	</box>
 }
 

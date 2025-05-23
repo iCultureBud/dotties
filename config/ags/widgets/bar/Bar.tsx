@@ -66,14 +66,12 @@ function Volume() {
 
 	return (
 		<box className="MainBox Volume">
-			<button
-				cursor="pointer"
-				onClicked={() => speaker.set_mute(!speaker.mute)}>
-				<icon icon={bind(speaker, "icon").as(iconName =>
+			<icon
+				icon={bind(speaker, "icon").as(iconName =>
 					iconName === "audio-headset-bluetooth"
 						? "audio-headphones-symbolic"
-						: "audio-speakers-bluetooth-symbolic")} />
-			</button>
+						: "audio-speakers-bluetooth-symbolic")}
+			/>
 		</box>
 	)
 }
