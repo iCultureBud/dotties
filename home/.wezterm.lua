@@ -28,13 +28,13 @@ end)
 
 
 return {
-	window_decorations = "RESIZE",
+    default_prog = { '/bin/fish' },
 	enable_wayland = true,
 	check_for_updates = false,
 	window_close_confirmation = "NeverPrompt",
 	hide_tab_bar_if_only_one_tab = true,
 	window_background_opacity = .95,
-	font_size = 17,
+	font_size = 14,
 	macos_window_background_blur = 80,
 	native_macos_fullscreen_mode = false,
 	font = wezterm.font_with_fallback {
