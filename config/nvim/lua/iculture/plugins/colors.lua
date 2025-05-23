@@ -37,22 +37,26 @@ return {
         -- Set color for Codeium in [nvim-cmp]
         vim.api.nvim_set_hl(0, 'CmpItemKindCodeium', { fg = colors.yellow })
 
+        -- Set and link background for winbar to Normal for transparency
         vim.api.nvim_create_autocmd({ 'UiEnter', 'ColorScheme' }, {
             callback = function()
                 -- 1.
                 vim.cmd [[
                     hi TabLineFill gui=nocombine
                     hi WinBar gui=nocombine
+                    hi WinBarNC gui=nocombine
                 ]]
                 -- 2.
                 vim.cmd [[
                     hi TabLineFill guibg=none
                     hi WinBar gui=none
+                    hi WinBarNC gui=none
                 ]]
                 -- 3.
                 vim.cmd [[
                     hi! link TabLineFill Normal
                     hi! link WinBar Normal
+                    hi! link WinBarNC Normal
                 ]]
             end
         })
