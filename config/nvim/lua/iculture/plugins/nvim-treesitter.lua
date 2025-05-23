@@ -6,9 +6,10 @@ return {
 	config = function()
 		require('nvim-treesitter.configs').setup({
 			ensure_installed = {
-				'bash', 'c', 'cpp',
-				'dockerfile', 'go', 'json',
-				'lua', 'python', 'vim', 'yaml'
+				'bash', 'c', 'cpp', 'cmake',
+				'dart', 'dockerfile', 'go',
+				'json', 'lua', 'norg',
+                'python', 'vim', 'yaml'
 			},
 			autotag = { enable = true },
 			autopairs = { enable = true },

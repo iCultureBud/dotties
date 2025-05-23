@@ -95,6 +95,7 @@ return {
         })
 
         lspconfig.pylsp.setup{}
+        lspconfig.harper_ls.setup{}
 
         -- Setup Dartls
         lspconfig.dartls.setup({
