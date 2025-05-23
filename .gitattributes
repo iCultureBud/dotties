@@ -1,2 +1,2 @@
-config/fish/* merge=ours
+config/fish/**/* merge=ours
 home/.wezterm.lua merge=ours
