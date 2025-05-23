@@ -120,10 +120,10 @@ local function set_fold_hl()
   vim.api.nvim_set_hl(0, "FoldedText", { bg = nf.bg, fg = comment.fg, italic = true })
 end
 
-set_fold_hl()
+-- set_fold_hl()
 
-vim.api.nvim_create_autocmd("ColorScheme", {
-  callback = set_fold_hl,
-})
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+--   callback = set_fold_hl,
+-- })
 
-return 'luaeval("HighlightedFoldtext")()'
+-- return 'luaeval("HighlightedFoldtext")()'
