@@ -33,7 +33,8 @@ vim.cmd([[
     autocmd BufNewFile,BufRead *.gls set filetype=glsl
 ]])
 
--- vim.o.foldcolumn = 'auto'
+vim.o.foldenable = false
+-- vim.o.foldcolumn = ''
 -- vim.o.foldmethod = 'expr'
 -- vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 -- vim.o.foldtext = require('iculture.core.folds')
