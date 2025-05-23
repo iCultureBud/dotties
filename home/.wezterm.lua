@@ -1,12 +1,12 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
-function get_appearance()
-	if wezterm.gui then
-		return wezterm.gui.get_appearance()
-	end
-	return 'Dark'
-end
+-- function get_appearance()
+	-- if wezterm.gui then
+		-- return wezterm.gui.get_appearance()
+	-- end
+	-- return 'Dark'
+-- end
 
 local function scheme_for_appearance(appearance)
 	if appearance:find 'Dark' then
@@ -16,25 +16,25 @@ local function scheme_for_appearance(appearance)
 	end
 end
 
--- wezterm.on("window-config-reloaded", function(window)
--- 	local overrides = window:get_config_overrides() or {}
--- 	local appearance = window:get_appearance()
--- 	local scheme = scheme_for_appearance(appearance)
--- 	if overrides.color_scheme ~= scheme then
--- 		overrides.color_scheme = scheme
--- 		window:set_config_overrides(overrides)
--- 	end
--- end)
+wezterm.on("window-config-reloaded", function(window)
+	local overrides = window:get_config_overrides() or {}
+	local appearance = window:get_appearance()
+	local scheme = scheme_for_appearance(appearance)
+	if overrides.color_scheme ~= scheme then
+		overrides.color_scheme = scheme
+		window:set_config_overrides(overrides)
+	end
+end)
+
 
 return {
-	-- window_decorations = "RESIZE",
-	font_size = 14,
+	window_decorations = "RESIZE",
 	enable_wayland = true,
 	check_for_updates = false,
-	color_scheme = scheme_for_appearance(get_appearance()),
 	window_close_confirmation = "NeverPrompt",
 	hide_tab_bar_if_only_one_tab = true,
 	window_background_opacity = .95,
+	font_size = 17,
 	macos_window_background_blur = 80,
 	native_macos_fullscreen_mode = false,
 	font = wezterm.font_with_fallback {
