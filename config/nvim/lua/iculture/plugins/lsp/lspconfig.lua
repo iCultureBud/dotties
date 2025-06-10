@@ -60,13 +60,6 @@ return {
             end
         })
 
-        -- Configure custom signs for diagnostics.
-        local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-        for type, icon in pairs(signs) do
-            local hl = "DiagnosticSign" .. type
-            vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-        end
-
         -- Set diagnostic keymaps.
         local diagnostic_opts = { noremap = true, silent = true }
         vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, diagnostic_opts)
@@ -76,14 +69,17 @@ return {
 
         -- Configure LSP diagnostics behaviour
         vim.diagnostic.config({
-            virtual_text = false,
-            -- virtual_text = {
-            -- 	enabled = false,
-            -- 	prefix = " ",
-            -- },
-            signs = true,
             underline = true,
+            virtual_text = false,
             update_in_insert = false,
+            signs = {
+                text = {
+                    [vim.diagnostic.severity.ERROR] = " ",
+                    [vim.diagnostic.severity.WARN] = " ",
+                    [vim.diagnostic.severity.HINT] = " ",
+                    [vim.diagnostic.severity.INFO] = " ",
+                }
+            }
         })
 
         -- Setup clang and cmake servers
