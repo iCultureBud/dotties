@@ -4,7 +4,7 @@ import { MediaStatus } from "./mediastatus/MediaStatus";
 // import { AppLauncher } from "../launcher/AppLauncher";
 
 import { App, Astal, Gtk, Gdk } from "astal/gtk3";
-import { Variable, GLib, bind } from "astal";
+import { Variable, GLib, bind, exec } from "astal";
 
 import Wp from "gi://AstalWp";
 import Tray from "gi://AstalTray";
@@ -19,7 +19,7 @@ import Hyprland from "gi://AstalHyprland";
 //
 function Launcher() {
 	return <box className="MainBox Launcher">
-		<button cursor="pointer" onClicked={() => null}>
+		<button cursor="pointer" onClicked={() => exec('wofi --show drun -I -W 30% -p ""')}>
 			<icon icon="start-here-archlinux-symbolic" />
 		</button>
 	</box>
@@ -50,11 +50,11 @@ function Time({ format = "%Y-%m-%d - %H:%M" }) {
 	const time = Variable<string>("").poll(1000, () =>
 		GLib.DateTime.new_now_local().format(format)!);
 
-	return <label
-		className="Time"
-		onDestroy={() => time.drop()}
-		label={time()}
-	/>
+	return <box className="MainBox Time">
+        <button cursor="pointer" onClicked={() => exec("gsimplecal")}>
+            <label className="nohigh" onDestroy={() => time.drop()} label={time()} />
+        </button>
+    </box>
 }
 
 

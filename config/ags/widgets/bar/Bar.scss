@@ -52,6 +52,44 @@ window.Bar {
         }
     }
 
+    .Time {
+        padding: 0;
+        border-radius: 500px;
+
+        >button {
+            padding: 0 12px;
+            border-radius: 500px;
+
+            &:hover {
+                background-color: color.scale($bg_dark, $alpha: -70%);
+            }
+        }
+
+        &:active {
+            label {
+                background-color: transparent;
+            }
+        }
+
+        >label {
+            &:hover {
+                background-color: orange;
+            }
+        }
+
+        &:hover>button {
+            background-color: color.scale($bg_dark, $alpha: -70%);
+        }
+
+        .nohigh {
+            background-color: transparent;
+
+            &:hover, &:active {
+                background-color: transparent;
+            }
+        }
+    }
+
     .Battery label {
         padding-left: 2px;
     }
