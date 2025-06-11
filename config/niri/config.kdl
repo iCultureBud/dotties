@@ -1,0 +1,205 @@
+prefer-no-csd
+
+environment {
+    DISPLAY ":0"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+    // QT
+    QT_QPA_PLATFORM "wayland;xcb"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    QT_QPA_PLATFORMTHEME "qt5ct"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+
+    // XDG
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+    XDG_SESSION_DESKTOP "niri"
+
+    // GDK/XDG
+    TDESKTOP_DISABLE_GTK_INTEGRATION "1"
+    GDK_BACKEND "wayland,x11"
+    SDL_VIDEODRIVER "wayland"
+    CLUTTER_BACKEND "wayland"
+    GTK_THEME "Gruvbox-Dark-Medium"
+    XCURSOR_THEME "Bibata-Modern-Ice"
+    ICON_THEME "Gruvbox-Plus-Dark"
+    GDK_SCALE "2"
+    XCURSOR_SIZE "12"
+
+    // MISC
+    MOZ_ENABLE_WAYLAND "1"
+}
+
+// Autostart
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "$HOME/.config/hypr/scripts/startup.sh"
+spawn-at-startup "hyprpaper"
+spawn-at-startup "iculture-shell"
+spawn-at-startup "wlsunset -l 46.9 -L 15.2 -t 5800"
+spawn-at-startup "wl-paste -t text --watch clipman store"
+
+input {
+    keyboard {
+        xkb {
+            layout "us-german-umalut"
+            options "ctrl:nocaps"
+        }
+
+        repeat-delay 400
+        repeat-rate 40
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    touch {
+        map-to-output "eDP-1"
+    }
+
+    focus-follows-mouse
+    workspace-auto-back-and-forth
+
+    mod-key "Super"
+    mod-key-nested "Ctrl"
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Ice"
+    xcursor-size 20
+}
+
+output "DP-3" {
+    focus-at-startup
+}
+
+output "Acer Technologies B276HK T5AEE0068511" {
+    focus-at-startup
+    position x=0 y=0
+}
+
+output "eDP-1" {
+    position x=2560 y=0
+    scale 1.25
+}
+
+
+layout {
+    gaps 12
+    center-focused-column "never"
+    empty-workspace-above-first
+    default-column-display "normal"
+    background-color "#003300"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    focus-ring {
+        width 2
+        inactive-color "#5a524c"
+        urgent-color "#ea6962"
+        active-gradient from="#89b482" to="#d3869b" angle=135
+    }
+
+    shadow {
+        on
+        softness 30
+        spread 5
+        offset x=0 y=0
+        draw-behind-window false
+        color "#00000070"
+        inactive-color "#00000054"
+    }
+
+    tab-indicator {
+        hide-when-single-tab
+        place-within-column
+        gap 6
+        width 4
+        length total-proportion=1.0
+        position "right"
+        gaps-between-tabs 2
+        corner-radius 8
+    }
+}
+
+binds {
+    // General
+    Mod+Shift+P { screenshot; }
+    Mod+Q { close-window; }
+    Mod+Shift+Escape { quit; }
+    Mod+O repeat=false { toggle-overview; }
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+I { maximize-column; }
+    Mod+Ctrl+R { reset-window-height; }
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    // Window focus and movement
+    Mod+J { focus-window-down; }
+    Mod+Shift+J { move-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+Shift+K { move-window-up; }
+
+    Mod+H { focus-column-left; }
+    Mod+Shift+H { move-column-left; }
+    Mod+L { focus-column-right; }
+    Mod+Shift+L { move-column-right; }
+
+    Mod+Ctrl+H  { consume-or-expel-window-left; }
+    Mod+Ctrl+L { consume-or-expel-window-right; }
+
+    Mod+Shift+Ctrl+J { move-column-to-workspace-down; }
+    Mod+Shift+Ctrl+K { move-column-to-workspace-up; }
+
+    // Columns
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+T { toggle-column-tabbed-display; }
+
+    // Workspaces
+    Mod+Ctrl+J { focus-workspace-down; }
+    Mod+Ctrl+K { focus-workspace-up; }
+
+    // Monitors
+    Mod+Shift+W  { focus-monitor-left; }
+    Mod+Shift+O  { focus-monitor-right; }
+
+    // Apps
+    Mod+B { spawn "firefox"; }
+    Mod+Return { spawn "wezterm"; }
+    Mod+Space { spawn "fuzzel"; }
+    Mod+Ctrl+Return { spawn "wezterm" "start" "--class" "wezterm-float"; }
+    Mod+Down { spawn "astal" "--instance" "iculture-shell" "-t" "ControlCenter"; }
+    Mod+D { spawn "clipman" "pick" "-t" "wofi"; }
+
+    // Media keys
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "3%+"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "3%-"; }
+    XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioNext { spawn "playerctl" "next"; }
+    XF86AudioPrev { spawn "playerctl" "previous"; }
+    XF86AudioPlay { spawn "playerctl" "play-pause"; }
+    XF86AudioPause { spawn "playerctl" "play-pause"; }
+}
+
+screenshot-path "~/Pictures/screenshots/screeny_%Y-%m-%d %H-%M-%S.png"
+
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
