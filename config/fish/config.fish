@@ -27,7 +27,7 @@ fish_add_path /opt/homebrew/sbin
 
 # LFCD
 # bind \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
-bind \co 'set old_tty (stty -g); stty sane; yazi; stty $old_tty; commandline -f repaint'
+bind \cf 'set old_tty (stty -g); stty sane; yazi; stty $old_tty; commandline -f repaint'
 
 # Greeting
 set -U fish_greeting
@@ -132,6 +132,13 @@ fzf_configure_bindings --directory=\ct --history=\cr --process=\cp --git_log= --
 # Init Zoxide
 zoxide init fish | source
 
-if status is-interactive
-    # Commands to run in interactive sessions can go here
+if status --is-interactive
+    keychain --quiet --agents ssh wo gh
+end
+
+begin
+    set -l HOSTNAME (hostname)
+    if test -f ~/.keychain/$HOSTNAME-fish
+        source ~/.keychain/$HOSTNAME-fish
+    end
 end
