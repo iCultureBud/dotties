@@ -28,7 +28,9 @@ end)
 
 
 return {
+	-- window_decorations = "RESIZE",
     default_prog = { '/bin/fish' },
+	font_size = 14,
 	enable_wayland = true,
 	check_for_updates = false,
 	window_close_confirmation = "NeverPrompt",
