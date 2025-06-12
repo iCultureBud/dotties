@@ -32,16 +32,14 @@ environment {
 
 // Autostart
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "$HOME/.config/hypr/scripts/startup.sh"
+spawn-at-startup "~/.config/hypr/scripts/startup.sh"
 spawn-at-startup "hyprpaper"
 spawn-at-startup "iculture-shell"
-spawn-at-startup "wlsunset -l 46.9 -L 15.2 -t 5800"
-spawn-at-startup "wl-paste -t text --watch clipman store"
 
 input {
     keyboard {
         xkb {
-            layout "us-german-umalut"
+            layout "us-german-umlaut"
             options "ctrl:nocaps"
         }
 
@@ -68,6 +66,9 @@ input {
 cursor {
     xcursor-theme "Bibata-Modern-Ice"
     xcursor-size 20
+
+    hide-when-typing
+    hide-after-inactive-ms 1000
 }
 
 output "DP-3" {
@@ -107,6 +108,10 @@ layout {
     }
 
     focus-ring {
+        off
+    }
+
+    border {
         width 2
         inactive-color "#5a524c"
         urgent-color "#ea6962"
@@ -182,10 +187,10 @@ binds {
     // Apps
     Mod+B { spawn "firefox"; }
     Mod+Return { spawn "wezterm"; }
-    Mod+Space { spawn "fuzzel"; }
-    Mod+Ctrl+Return { spawn "wezterm" "start" "--class" "wezterm-float"; }
-    Mod+Down { spawn "astal" "--instance" "iculture-shell" "-t" "ControlCenter"; }
     Mod+D { spawn "clipman" "pick" "-t" "wofi"; }
+    Mod+Space { spawn "wofi" "--show" "drun" "-I" "-W" "30%"; }
+    Mod+Ctrl+Return { spawn "wezterm" "start" "--class" "wezterm-float"; }
+    Menu { spawn "astal" "--instance" "iculture-shell" "-t" "ControlCenter"; }
 
     // Media keys
     XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "3%+"; }
@@ -202,4 +207,15 @@ screenshot-path "~/Pictures/screenshots/screeny_%Y-%m-%d %H-%M-%S.png"
 window-rule {
     geometry-corner-radius 8
     clip-to-geometry true
+}
+
+window-rule {
+    match title="(L|R)-(M|P)FD"
+
+    open-on-output "eDP-1"
+    open-floating false
+    open-fullscreen true
+
+    // default-column-width { fixed 40; }
+    // default-window-height { fixed 26; }
 }
