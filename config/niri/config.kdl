@@ -146,6 +146,7 @@ binds {
     Mod+S { screenshot; }
     Mod+Q { close-window; }
     Mod+Shift+Escape { spawn "gtklock" "-M" "DP-6"; }
+    Mod+Shift+E { quit; }
     Mod+O repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+I { maximize-column; }
@@ -190,8 +191,8 @@ binds {
 
     // Apps
     Mod+E { spawn "nautilus"; }
-    Mod+B { spawn "firefox"; }
-    Mod+Ctrl+B { spawn "firefox" "--private-window"; }
+    Mod+B { spawn "librewolf"; }
+    Mod+Ctrl+B { spawn "librewofl" "--private-window"; }
     Mod+Return { spawn "wezterm"; }
     Mod+D { spawn "clipman" "pick" "-t" "wofi"; }
     Mod+Space { spawn "wofi" "--show" "drun" "-I" "-W" "30%"; }
