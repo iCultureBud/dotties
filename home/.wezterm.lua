@@ -35,7 +35,7 @@ return {
 	check_for_updates = false,
 	window_close_confirmation = "NeverPrompt",
 	hide_tab_bar_if_only_one_tab = true,
-	window_background_opacity = .95,
+	window_background_opacity = 1,
 	font_size = 14,
 	macos_window_background_blur = 80,
 	native_macos_fullscreen_mode = false,
