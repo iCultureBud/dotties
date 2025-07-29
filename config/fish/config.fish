@@ -8,22 +8,6 @@ set -gx MANWIDTH 999
 set -gx BAT_THEME 'gruvbox-dark'
 set -U fish_user_paths $HOME/.spicetify $fish_user_paths
 set -U fish_user_paths $HOME/.local/bin $fish_user_paths
-# set -U fish_user_paths /opt/homebrew/opt/ruby/bin $fish_user_paths
-# set -Ux CHROME_EXECUTABLE /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
-# set -gx LDFLAGS '-L/opt/homebrew/opt/ruby/lib'
-# set -gx CPPFLAGS '-I/opt/homebrew/opt/ruby/include'
-# set -gx PKG_CONFIG_PATH '/opt/homebrew/opt/ruby/lib/pkgconfig'
-# set -gx GDAL_LIBRARY_PATH '/opt/homebrew/opt/gdal/lib/libgdal.dylib'
-# set -gx GEOS_LIBRARY_PATH '/opt/homebrew/opt/geos/lib/libgeos_c.dylib'
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-
-# Setting PATH for Python 3.12
-set -x PATH "/Library/Frameworks/Python.framework/Versions/3.12/bin" "$PATH"
-
-fish_add_path /opt/homebrew/bin
-fish_add_path /opt/homebrew/sbin
 
 # LFCD
 # bind \co 'set old_tty (stty -g); stty sane; lfcd; stty $old_tty; commandline -f repaint'
@@ -132,7 +116,7 @@ fzf_configure_bindings --directory=\ct --history=\cr --process=\cp --git_log= --
 zoxide init fish | source
 
 if status --is-interactive
-    keychain --quiet --agents ssh wo gh
+    keychain --quiet gh
 end
 
 begin
