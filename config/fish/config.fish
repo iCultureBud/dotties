@@ -60,7 +60,6 @@ alias frc="e ~/.config/fish/config.fish; source ~/.config/fish/config.fish"
 alias lg="lazygit"
 alias co="grepy"
 alias kd="k9s"
-abbr stat stat -x
 
 alias meh='echo "🤷"'
 alias wtf='echo "👀"'
