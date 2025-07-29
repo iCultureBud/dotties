@@ -1,5 +1,5 @@
 import { toggleWindow } from "../../utils/utils";
-import { WorkSpaces } from "./workspaces/Workspaces";
+// import { WorkSpaces } from "./workspaces/Workspaces";
 import { MediaStatus } from "./mediastatus/MediaStatus";
 // import { AppLauncher } from "../launcher/AppLauncher";
 
@@ -29,18 +29,18 @@ function Launcher() {
 //------------------------------------------------------------------------------
 // Focused Window Widget
 //
-function FocusedClient() {
-	const hypr = Hyprland.get_default();
-	const focused = bind(hypr, "focusedClient");
-
-	return <box
-		className="MainBox Focused"
-		visible={focused.as(Boolean)}>
-		{focused.as(client => (
-			client && <label label={bind(client, "class").as(String)} />
-		))}
-	</box>
-}
+// function FocusedClient() {
+// 	const hypr = Hyprland.get_default();
+// 	const focused = bind(hypr, "focusedClient");
+//
+// 	return <box
+// 		className="MainBox Focused"
+// 		visible={focused.as(Boolean)}>
+// 		{focused.as(client => (
+// 			client && <label label={bind(client, "class").as(String)} />
+// 		))}
+// 	</box>
+// }
 
 
 //------------------------------------------------------------------------------
@@ -175,8 +175,6 @@ export function Bar(monitor: Gdk.Monitor) {
 			<centerbox>
 				<box hexpand halign={Gtk.Align.START}>
 					<Launcher />
-					<WorkSpaces currMon={getMonitorName(monitor)} />
-					<FocusedClient />
 				</box>
 
 				<box><Time /></box>
