@@ -32,7 +32,7 @@ environment {
 
 // Autostart
 spawn-at-startup "xwayland-satellite"
-spawn-at-startup "~/.config/hypr/scripts/startup.sh"
+spawn-at-startup "~/.config/niri/scripts/startup.sh"
 spawn-at-startup "hyprpaper"
 spawn-at-startup "iculture-shell"
 
@@ -40,7 +40,6 @@ input {
     keyboard {
         xkb {
             layout "us-german-umlaut"
-            options "ctrl:nocaps"
         }
 
         repeat-delay 400
@@ -50,6 +49,8 @@ input {
     touchpad {
         tap
         natural-scroll
+        accel-speed 0.2
+        accel-profile "adaptive"
     }
 
     touch {
@@ -142,20 +143,21 @@ layout {
 
 binds {
     // General
-    Mod+Shift+P { screenshot; }
+    Mod+S { screenshot; }
     Mod+Q { close-window; }
-    Mod+Shift+Escape { quit; }
+    Mod+Shift+Escape { spawn "gtklock" "-M" "DP-6"; }
     Mod+O repeat=false { toggle-overview; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+I { maximize-column; }
+    Mod+Shift+I { fullscreen-window; }
     Mod+Ctrl+R { reset-window-height; }
     Mod+V       { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // Window focus and movement
-    Mod+J { focus-window-down; }
+    Mod+J { focus-window-or-workspace-down; }
     Mod+Shift+J { move-window-down; }
-    Mod+K { focus-window-up; }
+    Mod+K { focus-window-or-workspace-up; }
     Mod+Shift+K { move-window-up; }
 
     Mod+H { focus-column-left; }
@@ -179,13 +181,17 @@ binds {
     // Workspaces
     Mod+Ctrl+J { focus-workspace-down; }
     Mod+Ctrl+K { focus-workspace-up; }
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
 
     // Monitors
     Mod+Shift+W  { focus-monitor-left; }
     Mod+Shift+O  { focus-monitor-right; }
 
     // Apps
+    Mod+E { spawn "nautilus"; }
     Mod+B { spawn "firefox"; }
+    Mod+Ctrl+B { spawn "firefox" "--private-window"; }
     Mod+Return { spawn "wezterm"; }
     Mod+D { spawn "clipman" "pick" "-t" "wofi"; }
     Mod+Space { spawn "wofi" "--show" "drun" "-I" "-W" "30%"; }
@@ -218,4 +224,24 @@ window-rule {
 
     // default-column-width { fixed 40; }
     // default-window-height { fixed 26; }
+}
+
+window-rule {
+    match app-id="wezterm-float"
+
+    open-floating true
+}
+
+// Block apps for screencasting
+window-rule {
+    match app-id=r#"^com\.github\.IsmaelMartinez\.teams_for_linux$"#
+
+    block-out-from "screencast"
+}
+
+// Block notifications for screencasting
+layer-rule {
+    match namespace="^notifications$"
+
+    block-out-from "screencast"
 }
