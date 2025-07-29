@@ -15,9 +15,7 @@ AllowAllArgumentsOnNextLine: false
 AllowAllParametersOfDeclarationOnNextLine: false
 BreakInheritanceList: AfterColon
 BreakConstructorInitializers: AfterColon
-AlwaysBreakTemplateDeclarations: true
-# instead of ^^ use ⌄⌄ since clang-format 19
-# BreakTemplateDeclarationsStyle: Yes
+BreakTemplateDeclarationsStyle: Yes
 
 BreakBeforeBraces: Custom
 BraceWrapping:
