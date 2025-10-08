@@ -33,7 +33,6 @@ environment {
 // Autostart
 spawn-at-startup "xwayland-satellite"
 spawn-at-startup "~/.config/niri/scripts/startup.sh"
-spawn-at-startup "hyprpaper"
 spawn-at-startup "iculture-shell"
 
 input {
@@ -57,7 +56,7 @@ input {
         map-to-output "eDP-1"
     }
 
-    focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="20%"
     workspace-auto-back-and-forth
 
     mod-key "Super"
@@ -74,6 +73,7 @@ cursor {
 
 output "DP-3" {
     focus-at-startup
+    position x=0 y=0
 }
 
 output "Acer Technologies B276HK T5AEE0068511" {
@@ -191,8 +191,8 @@ binds {
 
     // Apps
     Mod+E { spawn "nautilus"; }
-    Mod+B { spawn "librewolf"; }
-    Mod+Ctrl+B { spawn "librewofl" "--private-window"; }
+    Mod+F { spawn "firefox"; }
+    Mod+Ctrl+F { spawn "firefox" "--private-window"; }
     Mod+Return { spawn "wezterm"; }
     Mod+D { spawn "clipman" "pick" "-t" "wofi"; }
     Mod+Space { spawn "wofi" "--show" "drun" "-I" "-W" "30%"; }
@@ -228,6 +228,28 @@ window-rule {
 }
 
 window-rule {
+    match title="L-GTC"
+
+    open-on-output "DP-6"
+    open-floating true
+
+    default-floating-position x=20 y=50 relative-to="bottom-left"
+    default-column-width { fixed 480; }
+    default-window-height { fixed 640; }
+}
+
+window-rule {
+    match title="R-GTC"
+
+    open-on-output "DP-6"
+    open-floating true
+
+    default-floating-position x=520 y=50 relative-to="bottom-left"
+    default-column-width { fixed 480; }
+    default-window-height { fixed 640; }
+}
+
+window-rule {
     match app-id="wezterm-float"
 
     open-floating true
@@ -245,4 +267,9 @@ layer-rule {
     match namespace="^notifications$"
 
     block-out-from "screencast"
+}
+
+// Hide Hotkey overlay on startup
+hotkey-overlay {
+    skip-at-startup
 }
