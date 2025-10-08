@@ -6,8 +6,8 @@ return {
         "folke/neodev.nvim"
     },
     config = function()
-        local lspconfig = require("lspconfig")
-        local configs = require("lspconfig.configs")
+        local configs = require "lspconfig/configs"
+        local util = require "lspconfig/util"
 
         -- Create keybinds for servers automatically on lsp attach event
         vim.api.nvim_create_autocmd("LspAttach", {
@@ -83,21 +83,17 @@ return {
         })
 
         -- Setup clang and cmake servers
-        lspconfig.cmake.setup{}
-        lspconfig.clangd.setup({
+        vim.lsp.config("clangd", {
             init_options = {
                 fallbackFlags = { "--std=c++20" }
             },
         })
 
-        lspconfig.pylsp.setup{}
-        lspconfig.harper_ls.setup{}
-
         -- Setup Dartls
-        lspconfig.dartls.setup({
+        vim.lsp.config("dartls", {
             cmd = { "dart", "language-server", "--protocol=lsp" },
             filetypes = { "dart" },
-            root_dir = lspconfig.util.root_pattern("pubspec.yaml"),
+            root_dir = util.root_pattern("pubspec.yaml"),
             init_options = {
                 onlyAnalyzeProjectsWithOpenFiles = "false",
                 suggestFromUnimportedLibraries = "true",
@@ -108,7 +104,7 @@ return {
         })
 
         -- Setup Lua LS
-        lspconfig.lua_ls.setup({
+        vim.lsp.config("lua_ls", {
             settings = {
                 Lua = {
                     diagnostics = {
@@ -128,20 +124,19 @@ return {
                     cmd = { "bytels", "lsp" },
                     filetypes = { "bytelang" },
                     root_dir = function(fname)
-                        return lspconfig.util.find_git_ancestor(fname)
+                        return util.find_git_ancestor(fname)
                     end,
                     settings = {},
                 },
             }
         end
-        lspconfig.bytels.setup{}
 
         local start_client = function()
             local config = {
                 cmd = { "bytels", "lsp" },
                 name = "bytels",
                 root_dir = function(fname)
-                    return lspconfig.util.find_git_ancestor(fname)
+                    return util.find_git_ancestor(fname)
                 end,
             }
 
@@ -161,6 +156,15 @@ return {
         local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
         vim.lsp.config("*", {
             capabilities = capabilities
+        })
+
+        -- Enable language servers
+        vim.lsp.enable({
+            "cmake",
+            "clangd",
+            -- "bytels",
+            "harper_ls",
+            "pylsp"
         })
 
         -- Enable for debugging bytels
